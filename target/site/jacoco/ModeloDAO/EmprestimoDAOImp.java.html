@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EmprestimoDAOImp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">ModeloDAO</a> &gt; <span class="el_source">EmprestimoDAOImp.java</span></div><h1>EmprestimoDAOImp.java</h1><pre class="source lang-java linenums">
+package ModeloDAO;
+
+
+import Classes.Emprestimo;
+import Utilitario.Conexao;
+import static Utilitario.Conexao.closeConnection;
+import static Utilitario.Conexao.getConnection;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+/**
+ *Classe que implementa EmpretimosDao e que irá executar os códigos relacionados com o Banco de Dados
+ * @author Kyllder, Pedro e Thiago
+ */
+<span class="nc" id="L23">public class EmprestimoDAOImp implements EmprestimoDAO {</span>
+    /**
+     * Atributo do pacote Utilitário referente a classe Connection
+     * @see Conexao
+     */
+    Connection con;
+    
+    
+    /**
+     *Método que fará um Novo Empréstimo
+     * @param u
+     */
+    public void NovoEmprestimo(Emprestimo u) {
+<span class="nc" id="L36">        con=Conexao.getConnection();</span>
+<span class="nc" id="L37">        PreparedStatement stmt=null;</span>
+<span class="nc" id="L38">        Date a=null;</span>
+        try {
+<span class="nc" id="L40">            stmt=con.prepareStatement(&quot;Insert into Emprestimo (NomeUser,NomeAdmin,NomeObra,dtPrevista,dtEmp) values (?,?,?,?,?)&quot;);</span>
+<span class="nc" id="L41">             stmt.setString(1,u.getNomeUser());</span>
+<span class="nc" id="L42">             stmt.setString(2,u.getNomeAdmin());</span>
+<span class="nc" id="L43">             stmt.setString(3,u.getNomeObra());</span>
+<span class="nc" id="L44">             a = new Date(u.getDtPrevista().getTimeInMillis());</span>
+<span class="nc" id="L45">             stmt.setDate(4,a);</span>
+<span class="nc" id="L46">              a = new Date(u.getDtEmp().getTimeInMillis());</span>
+<span class="nc" id="L47">             stmt.setDate(5,a);</span>
+<span class="nc" id="L48">             stmt.executeUpdate();</span>
+            
+<span class="nc" id="L50">        } catch (SQLException ex) {</span>
+<span class="nc" id="L51">            Logger.getLogger(UsuariosDAOImp.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L53">            Conexao.closeConnection(con, stmt);</span>
+        }    
+<span class="nc" id="L55">    }</span>
+    
+    /**
+     * Método que fará o registro da Devolução
+     * @param u
+     * @param a
+     */
+    public void Devolucao(Emprestimo u,Calendar b) {
+<span class="nc" id="L63">        con=Conexao.getConnection();</span>
+<span class="nc" id="L64">        PreparedStatement stmt=null;</span>
+<span class="nc" id="L65">        Date a=null;</span>
+        try {
+<span class="nc" id="L67">            stmt=con.prepareStatement(&quot;Insert into EmprestimoD (NomeUser,NomeAdmin,NomeObra,dtPrevista,dtReal,dtEmp) values (?,?,?,?,?,?)&quot;);</span>
+<span class="nc" id="L68">             stmt.setString(1,u.getNomeUser());</span>
+<span class="nc" id="L69">             stmt.setString(2,u.getNomeAdmin());</span>
+<span class="nc" id="L70">             stmt.setString(3,u.getNomeObra());</span>
+<span class="nc" id="L71">             a = new Date(u.getDtPrevista().getTimeInMillis());</span>
+<span class="nc" id="L72">             stmt.setDate(4,a);</span>
+<span class="nc" id="L73">             a = new Date(b.getTimeInMillis());</span>
+<span class="nc" id="L74">             stmt.setDate(5,a);</span>
+<span class="nc" id="L75">              a = new Date(u.getDtEmp().getTimeInMillis());</span>
+<span class="nc" id="L76">             stmt.setDate(6,a);</span>
+<span class="nc" id="L77">             stmt.executeUpdate();</span>
+<span class="nc" id="L78">            stmt=con.prepareStatement(&quot;DELETE FROM Emprestimo WHERE NomeUser like '&quot;+u.getNomeUser()+&quot;' and NomeAdmin like '&quot;+u.getNomeAdmin()+&quot;' and NomeObra like '&quot;+u.getNomeObra()+&quot;'&quot;); </span>
+<span class="nc" id="L79">             stmt.executeUpdate();</span>
+<span class="nc" id="L80">        } catch (SQLException ex) {</span>
+<span class="nc" id="L81">            Logger.getLogger(UsuariosDAOImp.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L83">            Conexao.closeConnection(con, stmt);</span>
+        }
+<span class="nc" id="L85">    }</span>
+
+    
+    /**
+     *Procura um ou mais Empréstimos, a partir de uma pesquisa, que ainda não foi devolvido
+     * @param pesquisa
+     * @return ArrayList
+     */
+    public ArrayList&lt;Emprestimo&gt; BuscarEmprestimosN(String pesquisa) {
+        
+<span class="nc" id="L95">        con=getConnection();</span>
+<span class="nc" id="L96">        PreparedStatement stmt=null;</span>
+<span class="nc" id="L97">        ResultSet rs=null;</span>
+<span class="nc" id="L98">        ArrayList&lt;Emprestimo&gt; array=new ArrayList();</span>
+<span class="nc" id="L99">        Emprestimo a=null;</span>
+<span class="nc" id="L100">        Calendar b=null,c=null,d=null;</span>
+        try {
+            
+<span class="nc" id="L103">           stmt=con.prepareStatement(&quot;SELECT * FROM Emprestimo WHERE NomeUser like '%&quot;+pesquisa+&quot;%' or NomeAdmin like '%&quot;+pesquisa+&quot;%' or NomeObra like '%&quot;+pesquisa+&quot;%' ORDER BY NomeUser ASC&quot;);</span>
+<span class="nc" id="L104">           rs= stmt.executeQuery();</span>
+           
+<span class="nc bnc" id="L106" title="All 2 branches missed.">            while (rs.next()) {    </span>
+<span class="nc" id="L107">                Date date = rs.getDate(&quot;dtPrevista&quot;);</span>
+<span class="nc" id="L108">                Calendar cal = new GregorianCalendar();</span>
+<span class="nc" id="L109">                cal.setTime(date);</span>
+<span class="nc" id="L110">                b=cal;</span>
+<span class="nc" id="L111">                date = rs.getDate(&quot;dtEmp&quot;);</span>
+<span class="nc" id="L112">                cal = new GregorianCalendar();</span>
+<span class="nc" id="L113">                cal.setTime(date);</span>
+<span class="nc" id="L114">                d=cal;</span>
+<span class="nc" id="L115">                a = new Emprestimo(rs.getString(&quot;NomeUser&quot;),rs.getString(&quot;NomeAdmin&quot;) , rs.getString(&quot;NomeObra&quot;),b,c,d);</span>
+<span class="nc" id="L116">                array.add(a);</span>
+<span class="nc" id="L117">            }</span>
+            
+<span class="nc" id="L119">        } catch (SQLException ex) {</span>
+<span class="nc" id="L120">            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L122">            closeConnection(con, stmt, rs);</span>
+<span class="nc" id="L123">            return array;</span>
+        }       
+    }
+
+    
+    /**
+     *Procura um Empréstimo, a partir de uma pesquisa, que já foi devolvido
+     * @param pesquisa
+     * @return ArrayList
+     */
+    public ArrayList&lt;Emprestimo&gt; BuscarEmprestimosD(String pesquisa) {
+<span class="nc" id="L134">       con=getConnection();</span>
+<span class="nc" id="L135">        PreparedStatement stmt=null;</span>
+<span class="nc" id="L136">        ResultSet rs=null;</span>
+<span class="nc" id="L137">        ArrayList&lt;Emprestimo&gt; array=new ArrayList();</span>
+<span class="nc" id="L138">        Emprestimo a=null;</span>
+<span class="nc" id="L139">        Calendar b=null,c=null,d=null;</span>
+        try {
+            
+<span class="nc" id="L142">            stmt=con.prepareStatement(&quot;SELECT * FROM EmprestimoD WHERE NomeUser like '%&quot;+pesquisa+&quot;%' or NomeAdmin like '%&quot;+pesquisa+&quot;%'or NomeObra like '%&quot;+pesquisa+&quot;%' ORDER BY NomeUser ASC&quot;);</span>
+<span class="nc" id="L143">           rs= stmt.executeQuery();</span>
+           
+<span class="nc bnc" id="L145" title="All 2 branches missed.">            while (rs.next()) {    </span>
+<span class="nc" id="L146">                Date date = rs.getDate(&quot;dtPrevista&quot;);</span>
+<span class="nc" id="L147">                Calendar cal = new GregorianCalendar();</span>
+<span class="nc" id="L148">                cal.setTime(date);</span>
+<span class="nc" id="L149">                b=cal;</span>
+<span class="nc" id="L150">                date = rs.getDate(&quot;dtReal&quot;);</span>
+<span class="nc" id="L151">                cal = new GregorianCalendar();</span>
+<span class="nc" id="L152">                cal.setTime(date);</span>
+<span class="nc" id="L153">                c=cal;</span>
+<span class="nc" id="L154">                date = rs.getDate(&quot;dtEmp&quot;);</span>
+<span class="nc" id="L155">                cal = new GregorianCalendar();</span>
+<span class="nc" id="L156">                cal.setTime(date);</span>
+<span class="nc" id="L157">                d=cal;</span>
+<span class="nc" id="L158">                a = new Emprestimo(rs.getString(&quot;NomeUser&quot;),rs.getString(&quot;NomeAdmin&quot;) , rs.getString(&quot;NomeObra&quot;),b,c,d);</span>
+<span class="nc" id="L159">                array.add(a);</span>
+<span class="nc" id="L160">            }</span>
+            
+<span class="nc" id="L162">        } catch (SQLException ex) {</span>
+<span class="nc" id="L163">            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L165">            closeConnection(con, stmt, rs);</span>
+<span class="nc" id="L166">            return array;</span>
+        }       
+    
+    }
+
+    
+    
+     /**
+     *Lista todos os Empréstimos que ainda não foram devolvidos
+     * @return ArrayList
+     */
+    public ArrayList&lt;Emprestimo&gt; ListaEmprestimosN() {
+<span class="nc" id="L178">        con=getConnection();</span>
+<span class="nc" id="L179">        PreparedStatement stmt=null;</span>
+<span class="nc" id="L180">        ResultSet rs=null;</span>
+<span class="nc" id="L181">        ArrayList&lt;Emprestimo&gt; array=new ArrayList(); </span>
+<span class="nc" id="L182">        Calendar b = null,c = null,d = null;</span>
+<span class="nc" id="L183">        Emprestimo a =null;</span>
+        try {
+            
+<span class="nc" id="L186">            stmt=con.prepareStatement(&quot;SELECT * FROM Emprestimo ORDER BY NomeUser ASC&quot;);</span>
+<span class="nc" id="L187">           rs= stmt.executeQuery();</span>
+           
+<span class="nc bnc" id="L189" title="All 2 branches missed.">            while (rs.next()) {</span>
+<span class="nc" id="L190">                Date date = rs.getDate(&quot;dtPrevista&quot;);</span>
+<span class="nc" id="L191">                Calendar cal = new GregorianCalendar();</span>
+<span class="nc" id="L192">                cal.setTime(date);</span>
+<span class="nc" id="L193">                b=cal;</span>
+<span class="nc" id="L194">                date = rs.getDate(&quot;dtEmp&quot;);</span>
+<span class="nc" id="L195">                cal = new GregorianCalendar();</span>
+<span class="nc" id="L196">                cal.setTime(date);</span>
+<span class="nc" id="L197">                d=cal;</span>
+<span class="nc" id="L198">                a = new Emprestimo(rs.getString(&quot;NomeUser&quot;),rs.getString(&quot;NomeAdmin&quot;) , rs.getString(&quot;NomeObra&quot;),b,c,d);</span>
+<span class="nc" id="L199">                array.add(a);</span>
+<span class="nc" id="L200">            }</span>
+            
+<span class="nc" id="L202">        } catch (SQLException ex) {</span>
+<span class="nc" id="L203">            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L205">            closeConnection(con, stmt, rs);</span>
+<span class="nc" id="L206">            return array;</span>
+        }
+    }
+    
+        
+        /**
+     * Lista todos os Empréstimos que foram devolvidos
+     * @return ArrayList
+     */
+        public ArrayList&lt;Emprestimo&gt; ListaEmprestimosD() {
+<span class="nc" id="L216">        con=getConnection();</span>
+<span class="nc" id="L217">        PreparedStatement stmt=null;</span>
+<span class="nc" id="L218">        ResultSet rs=null;</span>
+<span class="nc" id="L219">        ArrayList&lt;Emprestimo&gt; array=new ArrayList();</span>
+<span class="nc" id="L220">        Emprestimo a=null;</span>
+<span class="nc" id="L221">        Calendar b=null,c=null,d=null;</span>
+        try {
+            
+<span class="nc" id="L224">            stmt=con.prepareStatement(&quot;SELECT * FROM EmprestimoD ORDER BY NomeUser ASC&quot;);</span>
+<span class="nc" id="L225">           rs= stmt.executeQuery();</span>
+           
+<span class="nc bnc" id="L227" title="All 2 branches missed.">            while (rs.next()) {    </span>
+<span class="nc" id="L228">                Date date = rs.getDate(&quot;dtPrevista&quot;);</span>
+<span class="nc" id="L229">                Calendar cal = new GregorianCalendar();</span>
+<span class="nc" id="L230">                cal.setTime(date);</span>
+<span class="nc" id="L231">                b=cal;</span>
+<span class="nc" id="L232">                date = rs.getDate(&quot;dtReal&quot;);</span>
+<span class="nc" id="L233">                cal = new GregorianCalendar();</span>
+<span class="nc" id="L234">                cal.setTime(date);</span>
+<span class="nc" id="L235">                c=cal;</span>
+<span class="nc" id="L236">                date = rs.getDate(&quot;dtEmp&quot;);</span>
+<span class="nc" id="L237">                cal = new GregorianCalendar();</span>
+<span class="nc" id="L238">                cal.setTime(date);</span>
+<span class="nc" id="L239">                d=cal;</span>
+<span class="nc" id="L240">                a = new Emprestimo(rs.getString(&quot;NomeUser&quot;),rs.getString(&quot;NomeAdmin&quot;) , rs.getString(&quot;NomeObra&quot;),b,c,d);</span>
+<span class="nc" id="L241">                array.add(a);</span>
+<span class="nc" id="L242">            }</span>
+            
+<span class="nc" id="L244">        } catch (SQLException ex) {</span>
+<span class="nc" id="L245">            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L247">            closeConnection(con, stmt, rs);</span>
+<span class="nc" id="L248">            return array;</span>
+        }       
+    }   
+
+    
+     /**
+     *Método que irá verificar se a determinada cópia está disponível
+     * @param nome
+     * @param copias
+     * @return boolean - Se a cópia está disponível
+     */
+    public boolean CopiaDisponivel(String nome, int copias) {
+<span class="nc" id="L260">        con=getConnection();</span>
+<span class="nc" id="L261">        PreparedStatement stmt=null;</span>
+<span class="nc" id="L262">        ResultSet rs=null;</span>
+<span class="nc" id="L263">        boolean a=true;</span>
+        try {
+            
+<span class="nc" id="L266">            stmt=con.prepareStatement(&quot;SELECT count(*) as copias FROM Emprestimo Where NomeObra like '&quot;+nome+&quot;'&quot;);</span>
+<span class="nc" id="L267">           rs= stmt.executeQuery();</span>
+<span class="nc bnc" id="L268" title="All 2 branches missed.">            if (rs.next()) {</span>
+<span class="nc bnc" id="L269" title="All 2 branches missed.">                if (rs.getInt(1)==copias) {</span>
+<span class="nc" id="L270">                a=false;</span>
+            }
+            }
+            
+            
+<span class="nc" id="L275">        } catch (SQLException ex) {</span>
+<span class="nc" id="L276">            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L278">            closeConnection(con, stmt, rs);</span>
+<span class="nc" id="L279">            return a;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

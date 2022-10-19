@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerEmprestimo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">ControllerEmprestimo.java</span></div><h1>ControllerEmprestimo.java</h1><pre class="source lang-java linenums">package Controller;
+
+import Classes.Emprestimo;
+import Modelo.Usuarios;
+import ModeloDAO.EmprestimoDAOImp;
+import View.TelaAddEmprestimo;
+import View.TelaDevedores;
+import View.TelaDevolucao;
+import View.TelaDivida;
+import View.TelaVisualizarEmprestimos;
+import java.util.ArrayList;
+import java.util.Calendar;
+
+/**
+ * O Controller irá servir como ligação entre o DAO e a View
+ * @author Kyllder, Pedro e Thiago
+ */
+<span class="nc" id="L18">public class ControllerEmprestimo {</span>
+    /**
+    * Atributo para usar as ações relacionadas ao Banco de Dados
+    */
+<span class="nc" id="L22">    private EmprestimoDAOImp dao = new EmprestimoDAOImp();</span>
+   /**
+     *Método que fará um Novo Empréstimo
+     * @param e o Emprestimo a ser inserido
+     */
+    public void Adcionar(Emprestimo e){
+<span class="nc" id="L28">        dao.NovoEmprestimo(e);</span>
+<span class="nc" id="L29">    }/**</span>
+     * Método que fará a Devolução
+     * @param e o Emprestimo a ser removido 
+     * @param c a data da devolução
+     */
+    public void Remover(Emprestimo e,Calendar c){
+<span class="nc" id="L35">        dao.Devolucao(e,c);</span>
+<span class="nc" id="L36">    }</span>
+  /**
+     *Procura um Empréstimo, a partir de uma pesquisa, que ainda não foi devolvido
+     * @param pesquisa o texto a ser pesquisado
+     * @return ArrayList
+     */
+    public ArrayList&lt;Emprestimo&gt; BuscarN(String pesquisa){
+<span class="nc" id="L43">        return dao.BuscarEmprestimosN(pesquisa);</span>
+    }
+    /**
+     *Procura um ou mais Empréstimos, a partir de uma pesquisa, que já foi devolvido
+     * @param pesquisa o texto a ser pesquisado
+     * @return ArrayList
+     */
+    public ArrayList&lt;Emprestimo&gt; BuscarD(String pesquisa){
+<span class="nc" id="L51">        return dao.BuscarEmprestimosD(pesquisa);</span>
+    }
+    /**
+     *Lista todos os Empréstimos que ainda não foram devolvidos
+     * @return ArrayList 
+     */
+    public ArrayList&lt;Emprestimo&gt; ListarN(){
+<span class="nc" id="L58">        return dao.ListaEmprestimosN();</span>
+    }
+     /**
+     * Lista todos os Empréstimos que foram devolvidos
+     * @return ArrayList
+     */
+    public ArrayList&lt;Emprestimo&gt; ListarD(){
+<span class="nc" id="L65">        return dao.ListaEmprestimosD();</span>
+    }
+    /**
+     *Método que irá verificar se a determinada cópia está disponível
+     * @param nome da Obra
+     * @param copias copias da Obra
+     * @return boolean - Se a cópia está disponível
+     */
+    public boolean CopiaDisponivel(String nome, int copias){
+<span class="nc" id="L74">        return dao.CopiaDisponivel(nome,copias);</span>
+    }
+    /**
+     * Método que irá chamar a TelaAddEmprestimo
+     * @param Admin o nome do Administrador ue esta realizando o Emprestimo
+     * @see TelaAddEmprestimo
+     */
+    public void TelaAdcionar(String Admin){
+<span class="nc" id="L82">        TelaAddEmprestimo add = new TelaAddEmprestimo(Admin);</span>
+<span class="nc" id="L83">        add.setVisible(true);</span>
+<span class="nc" id="L84">    }</span>
+    /**
+     * Método que irá chamar a TelaDevolução
+     * @see TelaDevolucao
+     */
+    public void TelaRemover(){
+<span class="nc" id="L90">        TelaDevolucao deletar = new TelaDevolucao();</span>
+<span class="nc" id="L91">        deletar.setVisible(true);</span>
+<span class="nc" id="L92">    }</span>
+   /**
+    * Método que irá chamar a TelaVisualizar
+    * @see TelaVisualizarEmprestimos
+    */
+    public void TelaVisualizar(){
+<span class="nc" id="L98">        TelaVisualizarEmprestimos v = new TelaVisualizarEmprestimos();</span>
+<span class="nc" id="L99">        v.setVisible(true);</span>
+<span class="nc" id="L100">    }</span>
+    /**
+     * Método que irá chamar TelaDívida
+     * @param parent o JFrame pai da nova Tela
+     * @param modal se quer continuar com o modelo
+     * @param divida a divida dele
+     * @param u o Usuário que esta devendo
+     * @see TelaDivida
+     */
+    public void TelaDivida(java.awt.Frame parent, boolean modal,double divida,Usuarios u){
+<span class="nc" id="L110">        TelaDivida td = new TelaDivida(parent,modal,divida, u);</span>
+<span class="nc" id="L111">        td.setVisible(true);</span>
+<span class="nc" id="L112">    }</span>
+    /**
+     * Método que irá chamar a TelaDevedores
+     * @see TelaDevedores
+     */
+    public void TelaDevedores(){
+<span class="nc" id="L118">        TelaDevedores td = new TelaDevedores();</span>
+<span class="nc" id="L119">        td.setVisible(true);</span>
+<span class="nc" id="L120">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

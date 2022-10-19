@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NormasTecnicas.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">Classes</a> &gt; <span class="el_source">NormasTecnicas.java</span></div><h1>NormasTecnicas.java</h1><pre class="source lang-java linenums">package Classes;
+
+import Modelo.Obra;
+
+/**
+ * Classe NormasTecnicas, implementado por obra
+ * @author Kyllder, Pedro e Thiago
+ * @version 1.0
+ */
+public class NormasTecnicas implements Obra{
+        /**Uma String que armazena o nome da Norma Tecnica*/
+        private String nome;
+        /**Uma String que armazena o assunto da Norma Tecnica*/
+        private String assunto;
+        /**Um inteiro que armazena o codigo da Norma Tecnica*/
+        private final int codigo;
+        /**Uma String que armazena o numero da Norma Tecnica*/
+        private String numero;
+        /**Um inteiro que armazena a quantidade de cópias da Norma Tecnica*/
+        private int copias;
+/**
+ * Construtor da classe
+ * @param nome o nome da Norma
+ * @param assunto o assunto da Norma
+ * @param numero o número da Norma
+ * @param copias a quantidade de cópias da Norma
+ * @param codigo ocódigo da Norma
+ */
+<span class="nc" id="L29">public NormasTecnicas(String nome, String assunto, String numero,int copias ,int codigo){</span>
+<span class="nc" id="L30">this.nome = nome;</span>
+<span class="nc" id="L31">this.assunto = assunto;</span>
+<span class="nc" id="L32">this.codigo = codigo;</span>
+<span class="nc" id="L33">this.numero = numero;</span>
+<span class="nc" id="L34">this.copias = copias;</span>
+<span class="nc" id="L35">}</span>
+/**
+     * Metodo para retorno do nome da NormaTecnica
+     * @return o nome 
+     */
+
+public String getNome() {
+<span class="nc" id="L42">return nome;</span>
+}
+/**
+* Metodo para modificar o nome da NormaTecnica
+* @param nome o novo nome
+*/
+
+public void setNome(String nome) {
+<span class="nc" id="L50">this.nome=nome;</span>
+<span class="nc" id="L51">}</span>
+/**
+     * Metodo para retorno do assunto da NormaTecnica
+     * @return o assunto
+     */
+
+public String getAssunto() {
+<span class="nc" id="L58">return assunto;</span>
+}
+/**
+* Metodo para modificar o assunto da NormaTecnica
+* @param assunto o novo assunto
+*/
+
+public void setAssunto(String assunto) {
+<span class="nc" id="L66">this.assunto=assunto;</span>
+<span class="nc" id="L67">}</span>
+/**
+     * Metodo para retorno do numero de NormasTecnicas
+     * @return o número 
+     */
+
+public String getNumero() {
+<span class="nc" id="L74">return numero;</span>
+}
+/** 
+* Metodo para modificar o numero de NormasTecnicas
+* @param numero o novo número
+*/
+
+public void setNumero(String numero) {
+<span class="nc" id="L82">this.numero = numero;</span>
+<span class="nc" id="L83">}</span>
+/**
+     * Metodo para retorno do Autor de NormasTecnicas
+     * @return o autor
+     */
+
+    
+    public String getAutor() {
+<span class="nc" id="L91">        return null;</span>
+    }
+    /** 
+* Metodo para modificar o Autor de NormasTecnicas
+* @param autor o nome do novo autor
+*/
+    
+    public void setAutor(String autor) {
+        
+<span class="nc" id="L100">    }</span>
+    /**
+     * Metodo para retorno do tipo 
+     * @return o tipo de Obra
+     */
+    
+    public String getTipo() {
+<span class="nc" id="L107">        return &quot;NormasTecnicas&quot;;</span>
+    }
+    /**
+     * Metodo para retorno do codigo da NormaTecnica 
+     * @return o código
+     */
+    
+    public int getCod() {
+<span class="nc" id="L115">        return codigo;</span>
+    }
+    /** 
+* Metodo para modificar a  Editora de NormasTecnicas
+* @param editora a nova editora
+*/
+    
+    public void setEditora(String editora) {
+       
+<span class="nc" id="L124">    }</span>
+    /**
+     * Metodo para retorno da Editora da NormaTecnica 
+     * @return a editora
+     */
+
+    
+    public String getEditora() {
+<span class="nc" id="L132">         return null;</span>
+    }
+    /** 
+* Metodo para modificar o Genero de NormasTecnicas
+* @param genero o novo gênero
+*/
+    
+    public void setGenero(String genero) {
+       
+<span class="nc" id="L141">    }</span>
+    /**
+     * Metodo para retorno do Genero da NormaTecnica 
+     * @return o gênero
+     */
+    
+    public String getGenero() {
+<span class="nc" id="L148">         return null;</span>
+    }
+/**
+ *  Metodo para retorno das copias de NormasTecnicas 
+     * @return a quantidade de cópias
+ */
+    
+    public int getCopias() {
+<span class="nc" id="L156">        return copias;</span>
+    }
+/**
+ * Metodo para modificar o numero de copias das NormasTecnicas
+ *  @param n a nova quantidade de cópias
+ */
+    
+    public void setCopias(int n) {
+<span class="nc" id="L164">        this.copias=n;</span>
+<span class="nc" id="L165">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

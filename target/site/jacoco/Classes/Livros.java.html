@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Livros.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">Classes</a> &gt; <span class="el_source">Livros.java</span></div><h1>Livros.java</h1><pre class="source lang-java linenums">package Classes;
+
+import Modelo.Obra;
+
+/**
+ * Classe Livros, implementado por obra
+ * @author Kyllder, Pedro e Thiago
+ * @version 1.0
+ */
+public class Livros implements Obra{
+
+        /**Uma String que armazena a editora do Livro*/
+        private String editora;
+        /**Uma String que armazena o nome do Livro*/
+        private String nome;
+        /**Uma String que armazena o assunto do Livro*/
+        private String assunto;
+        /**Um inteiro que armazena o codigo do Livro*/
+        private final int codigo;
+        /**Uma String que armazena o autor do Livro*/
+        private String autor;
+        /**Um inteiro que armazena a quantidade de cópias do Livro*/
+        private int copias;
+        /**Uma String que armazena o gênero do Livro*/
+        private String genero;
+/**
+ * Construtor da classe
+     * @param nome o Nome do Livro
+     * @param assunto o assunto do Livro
+     * @param autor o autor do Livro
+     * @param editora a editora do Livro
+     * @param genero o gênero do Livro
+     * @param copias a quantidade de copias do Livro
+     * @param cod o código do Livro
+ */
+<span class="nc" id="L36">public Livros(String nome,String assunto, String autor, String editora, String genero,int copias, int cod){</span>
+<span class="nc" id="L37">this.autor = autor;</span>
+<span class="nc" id="L38">this.nome = nome;</span>
+<span class="nc" id="L39">this.editora = editora;</span>
+<span class="nc" id="L40">this.genero = genero;</span>
+<span class="nc" id="L41">this.codigo = cod;</span>
+<span class="nc" id="L42">this.assunto=assunto;</span>
+<span class="nc" id="L43">this.copias=copias;</span>
+<span class="nc" id="L44">}</span>
+/**
+* Metodo para retorno do Autor do Livro
+* @return o autor
+*/
+
+public String getAutor() {
+<span class="nc" id="L51">return autor;</span>
+}
+/**
+* Metodo para modificar o Autor do Livro
+* @param autor o novo nome do autor
+*/
+
+public void setAutor(String autor) {
+<span class="nc" id="L59">this.autor = autor;</span>
+<span class="nc" id="L60">}</span>
+/**
+* Metodo para retorno do nome do Livro
+     * @return o nome
+*/
+
+public String getNome() {
+<span class="nc" id="L67">return nome;</span>
+}
+/**
+* Metodo para modificar o nome do Livro
+* @param nome o novo Nome
+*/
+
+public void setNome(String nome) {
+<span class="nc" id="L75">this.nome = nome;</span>
+<span class="nc" id="L76">}</span>
+/**
+* Metodo para retorno da Editora do Livro
+     * @return a editora
+*/
+
+public String getEditora() {
+<span class="nc" id="L83">return editora;</span>
+}
+/**
+* Metodo para modificar a editora do Livro
+* @param editora a nova editora
+*/
+
+public void setEditora(String editora) {
+<span class="nc" id="L91">this.editora = editora;</span>
+<span class="nc" id="L92">}</span>
+/**
+* Metodo para retorno do Genero do Livro
+* @return o gênero
+*/
+
+public String getGenero() {
+<span class="nc" id="L99">return genero;</span>
+}
+/**
+* Metodo para modificar o genero do Livro
+* @param genero o novo gênero
+*/
+
+public void setGenero(String genero) {
+<span class="nc" id="L107">this.genero = genero;</span>
+<span class="nc" id="L108">}</span>
+/**
+* Metodo para retorno do codigo do Livro
+     * @return int - codigo
+*/
+
+public int getCod() {
+<span class="nc" id="L115">return codigo;</span>
+}
+/**
+* Metodo para retorno do assunto do Livro
+     * @return o assunto
+*/
+    
+    public String getAssunto() {
+<span class="nc" id="L123">        return assunto;</span>
+    }
+    /**
+* Metodo para modificar o assunto do Livro
+* @param assunto o novo assunto
+*/
+    
+    public void setAssunto(String assunto) {
+<span class="nc" id="L131">        this.assunto=assunto;</span>
+<span class="nc" id="L132">    }</span>
+    /**
+* Metodo para retorno do tipo
+* @return o tipo
+*/
+    
+    public String getTipo() {
+<span class="nc" id="L139">        return &quot;Livro&quot;;</span>
+    }
+    /**
+* Metodo para modificar o numero de Livros
+* @param numero o novo número
+*/
+    
+    public void setNumero(String numero) {
+        
+<span class="nc" id="L148">    }</span>
+    /**
+* Metodo para retorno do numero de livros
+     * @return o número do livro
+*/
+    
+    public String getNumero() {
+<span class="nc" id="L155">    return null;</span>
+    }
+    /**
+* Metodo para retorno do numero de copias 
+     * @return a quantidade de copias
+*/
+    
+    public int getCopias() {
+<span class="nc" id="L163">        return copias;</span>
+    }
+    /** 
+* Metodo para modificar o numero de copias de Livros
+* @param n a nova quantidade de cópias
+*/
+    
+    public void setCopias(int n) {
+<span class="nc" id="L171">        this.copias=n;</span>
+<span class="nc" id="L172">    }</span>
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

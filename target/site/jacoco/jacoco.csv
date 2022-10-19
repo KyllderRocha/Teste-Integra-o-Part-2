@@ -1,0 +1,202 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Teste,ModeloDAO,UsuariosDAOImp,484,0,16,0,80,0,14,0,6,0
+Teste,ModeloDAO,EmprestimoDAOImp,725,0,12,0,154,0,14,0,8,0
+Teste,ModeloDAO,AdministradoresDAOImp,483,0,6,0,82,0,10,0,7,0
+Teste,ModeloDAO,ObraDAOImp,815,0,26,0,116,0,28,0,7,0
+Teste,Utilitario,Conexao,63,0,6,0,25,0,8,0,5,0
+Teste,Controller,ControllerUsuario,76,0,0,0,25,0,11,0,11,0
+Teste,Controller,ControllerAdmin,82,0,0,0,26,0,12,0,12,0
+Teste,Controller,ControllerEmprestimo,88,0,0,0,26,0,13,0,13,0
+Teste,Controller,ControllerPrincipal,30,0,0,0,9,0,4,0,4,0
+Teste,Controller,ControllerObra,79,0,0,0,26,0,12,0,12,0
+Teste,View,TelaLogin,571,0,6,0,126,0,11,0,8,0
+Teste,View,TelaEditarA,795,0,10,0,189,0,13,0,8,0
+Teste,View,TelaDivida.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDivida.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarO.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarO.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarO.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarO.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarO.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarO.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarO.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarO.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarO.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarAdmin.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarAdmin.new MouseMotionAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarAdmin.new DefaultTableModel() {...},90,0,0,0,5,0,3,0,3,0
+Teste,View,TelaEditarAdmin.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarAdmin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarAdmin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarAdmin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddObra,1549,0,16,0,350,0,21,0,13,0
+Teste,View,TelaAddObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddEmprestimo,1169,0,52,0,195,0,38,0,12,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarEmprestimos.new MouseMotionAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarEmprestimos.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarEmprestimos.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarEmprestimos.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarUsuarios.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarUsuario.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarUsuario.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarUsuario.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarUsuario.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarUsuario.new DefaultTableModel() {...},74,0,0,0,5,0,3,0,3,0
+Teste,View,TelaEditarUsuario.new MouseMotionAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarUsuario.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarA.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarA.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarA.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarUsuarios,609,0,16,0,113,0,17,0,9,0
+Teste,View,TelaEditarA.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarUsuario,587,0,18,0,101,0,17,0,8,0
+Teste,View,TelaEditarA.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarA.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarAdmin,542,0,16,0,99,0,16,0,8,0
+Teste,View,TelaVisualizarUsuarios.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarUsuarios.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarUsuarios.new DefaultTableModel() {...},74,0,0,0,5,0,3,0,3,0
+Teste,View,TelaVisualizarUsuarios.new MouseMotionAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarObra,599,0,20,0,103,0,18,0,8,0
+Teste,View,TelaVisualizarUsuarios.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDevedores,570,0,20,0,101,0,17,0,7,0
+Teste,View,TelaAddEmprestimo.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarObra.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddEmprestimo.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddUsuario,663,0,14,0,156,0,14,0,6,0
+Teste,View,TelaAddEmprestimo.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarUsuarios,433,0,10,0,78,0,11,0,6,0
+Teste,View,TelaDevolucao.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDevolucao.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarObra.new DefaultTableModel() {...},90,0,0,0,5,0,3,0,3,0
+Teste,View,TelaEditarObra.new MouseMotionAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarObra.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarObra,640,0,18,0,101,0,17,0,8,0
+Teste,View,TelaDevolucao.new DefaultTableModel() {...},74,0,0,0,5,0,3,0,3,0
+Teste,View,TelaDevolucao.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarAdmin,624,0,18,0,103,0,17,0,8,0
+Teste,View,TelaDevolucao.new MouseMotionAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDevolucao.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDevolucao.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaMenu,804,0,2,0,156,0,20,0,19,0
+Teste,View,TelaVisualizarAdmin,441,0,10,0,74,0,11,0,6,0
+Teste,View,TelaVisualizarEmprestimos,585,0,16,0,90,0,14,0,6,0
+Teste,View,TelaDeletarObra.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarObra.new MouseMotionAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaLogin.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarObra.new DefaultTableModel() {...},82,0,0,0,5,0,3,0,3,0
+Teste,View,TelaDeletarObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaLogin.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarObra.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaLogin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaLogin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaLogin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarUsuarios.new AbstractListModel() {...},39,0,0,0,4,0,3,0,3,0
+Teste,View,TelaDeletarUsuarios.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarUsuarios.new AbstractListModel() {...},39,0,0,0,4,0,3,0,3,0
+Teste,View,TelaDevedores.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDevedores.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDivida,329,0,0,0,74,0,4,0,4,0
+Teste,View,TelaDevedores.new DefaultTableModel() {...},74,0,0,0,5,0,3,0,3,0
+Teste,View,TelaDevedores.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDevedores.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDevedores.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarUsuarios.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarUsuarios.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarUsuarios.new DefaultTableModel() {...},74,0,0,0,5,0,3,0,3,0
+Teste,View,TelaDeletarUsuarios.new MouseMotionAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarUsuarios.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarUsuarios.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddUsuario.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddUsuario.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddUsuario.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddUsuario.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarEmprestimos.new DefaultTableModel() {...},74,0,0,0,5,0,3,0,3,0
+Teste,View,TelaVisualizarObras.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarObras.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarObras.new DefaultTableModel() {...},90,0,0,0,5,0,3,0,3,0
+Teste,View,TelaVisualizarObras.new MouseMotionAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarObras.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddAdmin,725,0,10,0,175,0,13,0,8,0
+Teste,View,TelaDeletarAdmin.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarAdmin.new DefaultTableModel() {...},90,0,0,0,5,0,3,0,3,0
+Teste,View,TelaDeletarAdmin.new MouseMotionAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarAdmin.new MouseMotionAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarAdmin.new DefaultTableModel() {...},74,0,0,0,5,0,3,0,3,0
+Teste,View,TelaDeletarAdmin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarAdmin.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarAdmin.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarAdmin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarAdmin.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddObra.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaDeletarAdmin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarAdmin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddEmprestimo.new MouseMotionAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddEmprestimo.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarO.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddEmprestimo.new DefaultTableModel() {...},90,0,0,0,5,0,3,0,3,0
+Teste,View,TelaEditarU.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarU.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarU.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddEmprestimo.new MouseAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddEmprestimo.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddEmprestimo.new DefaultTableModel() {...},74,0,0,0,5,0,3,0,3,0
+Teste,View,TelaAddEmprestimo.new MouseMotionAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddEmprestimo.new KeyAdapter() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddEmprestimo.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarU.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddAdmin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddAdmin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddAdmin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddAdmin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddAdmin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaAddAdmin.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaEditarO.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+Teste,View,TelaVisualizarObras,461,0,10,0,75,0,11,0,6,0
+Teste,View,TelaEditarU,706,0,14,0,162,0,14,0,6,0
+Teste,View,TelaEditarO,1713,0,32,0,380,0,30,0,14,0
+Teste,View,TelaDevolucao,647,0,22,0,111,0,19,0,8,0
+Teste,Classes,UsuarioNormal,167,0,6,0,51,0,23,0,20,0
+Teste,Classes,Administradores,83,0,0,0,34,0,17,0,17,0
+Teste,Classes,NormasTecnicas,60,0,0,0,27,0,17,0,17,0
+Teste,Classes,UsuarioCom,171,0,6,0,51,0,23,0,20,0
+Teste,Classes,Emprestimo,48,0,0,0,17,0,7,0,7,0
+Teste,Classes,Especificos,67,0,0,0,29,0,17,0,17,0
+Teste,Classes,Periodicos,67,0,0,0,29,0,17,0,17,0
+Teste,Classes,Artigo,60,0,0,0,27,0,17,0,17,0
+Teste,Classes,MidiasEletronicas,64,0,0,0,28,0,17,0,17,0
+Teste,Classes,UsuarioFunc,171,0,6,0,51,0,23,0,20,0
+Teste,Classes,Livros,74,0,0,0,31,0,17,0,17,0
+Teste,Classes,Quadrinhos,67,0,0,0,29,0,17,0,17,0
+Teste,Classes,Manga,21,0,0,0,7,0,4,0,4,0

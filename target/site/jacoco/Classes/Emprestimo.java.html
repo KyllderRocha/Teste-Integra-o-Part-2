@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Emprestimo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">Classes</a> &gt; <span class="el_source">Emprestimo.java</span></div><h1>Emprestimo.java</h1><pre class="source lang-java linenums">package Classes;
+
+import Modelo.Emprestimos;
+import java.util.Calendar;
+
+/**
+ * Classe Emprestimos, implementado por Emprestimos
+ * @author Kyllder, Pedro e Thiago
+ * @version 1.0
+ */
+public class Emprestimo implements Emprestimos{
+    /** Uma String que armazena o nome do Usuario que pediu o Emprestimo*/
+    private final String NomeUser;
+    /** Uma String que armazena o nome do Administrador que fez o Emprestimo*/
+    private final String NomeAdmin;
+    /** Uma String que armazena o nome da Obra que foi Emprestada*/
+    private final String NomeObra;
+    /** Um Calendar que armazena a data limite da entrega do Emprestimo*/
+<span class="nc" id="L19">    private Calendar dtPrevista=null;</span>
+    /** Um Calendar que armazena a data da entrega do Emprestimo*/
+<span class="nc" id="L21">    private Calendar dtReal=null;</span>
+    /** Um Calendar que armazena a data do Emprestimo*/
+<span class="nc" id="L23">    private Calendar dtEmp=null;</span>
+    /**
+     * Construtor da classe
+     * @param NomeUser o nome do Usuario que está pedio o Emprestimo
+     * @param NomeAdmin o nome do Administrador que está fez o Emprestimo
+     * @param NomeObra o nome da Obra emprestada
+     * @param dtPrevista a data que é para ele entregar
+     * @param dtReal a data que ele entregou
+     * @param dtEmp a data que foi feito o Emprestimo
+     */
+<span class="nc" id="L33">    public Emprestimo(String NomeUser,String NomeAdmin,String NomeObra, Calendar dtPrevista,Calendar dtReal, Calendar dtEmp){</span>
+<span class="nc" id="L34">        this.NomeUser=NomeUser;</span>
+<span class="nc" id="L35">        this.NomeAdmin=NomeAdmin;</span>
+<span class="nc" id="L36">        this.NomeObra=NomeObra;</span>
+<span class="nc" id="L37">        this.dtPrevista=dtPrevista;</span>
+<span class="nc" id="L38">        this.dtReal=dtReal;</span>
+<span class="nc" id="L39">        this.dtEmp=dtEmp;</span>
+<span class="nc" id="L40">}</span>
+    /**
+     * Metodo para retorno do nome do User
+     * @return o nome do Usuario
+     * 
+     */
+
+    
+    public String getNomeUser() {
+<span class="nc" id="L49">        return NomeUser;</span>
+    }
+
+    /**
+     * Metodo para retorno do nome do Administrador
+     * @return o nome do Administrador
+     * 
+     */
+
+    
+    public String getNomeAdmin() {
+<span class="nc" id="L60">        return NomeAdmin;</span>
+    }
+
+    /**
+     * Metodo para retorno do nome da Obra
+     * @return o nome da Obra
+     * 
+     */
+
+
+    
+    public String getNomeObra() {
+<span class="nc" id="L72">        return NomeObra;</span>
+    }
+
+    /**
+     * Metodo para retorno da data de previsão
+     * @return a data de prevista
+     * 
+     */
+
+    
+    public Calendar getDtPrevista() {
+<span class="nc" id="L83">        return dtPrevista;</span>
+    }
+    /**
+     * Metodo para retorno da data real
+     * @return a data que foi entrege
+     * 
+     */
+    
+    public Calendar getDtReal() {
+<span class="nc" id="L92">        return dtReal;</span>
+    }
+    /**
+     * Metodo para retorno da data do emprestimo
+     * @return a data do emprestimo
+     * 
+     */
+    
+    public Calendar getDtEmp() {
+<span class="nc" id="L101">        return dtEmp;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

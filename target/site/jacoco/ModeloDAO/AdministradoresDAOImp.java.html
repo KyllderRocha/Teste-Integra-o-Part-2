@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdministradoresDAOImp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">ModeloDAO</a> &gt; <span class="el_source">AdministradoresDAOImp.java</span></div><h1>AdministradoresDAOImp.java</h1><pre class="source lang-java linenums">
+package ModeloDAO;
+
+import Classes.Administradores;
+import Utilitario.Conexao;
+import static Utilitario.Conexao.closeConnection;
+import static Utilitario.Conexao.getConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *Classe que implementa AdministradoresDao e que irá executar os códigos relacionados com o Banco de Dados
+ * @author Kyllder, Pedro e Thiago
+ */
+<span class="nc" id="L20">public class AdministradoresDAOImp implements AdministradoresDao {</span>
+    /**
+     * Atributo do pacote Utilitário referente a classe Connection
+     * @see Conexao
+     */
+    Connection con;
+    
+    /**
+     * Insere no Banco de Dados um Administrador
+     * @param u 
+     */
+    public void InsereAdmin(Administradores u) {
+<span class="nc" id="L32">        con=Conexao.getConnection();</span>
+<span class="nc" id="L33">        PreparedStatement stmt=null;</span>
+        try {
+<span class="nc" id="L35">            stmt=con.prepareStatement(&quot;Insert into Admin (nome,cpf,rg,telefone,endereco,tipo,senha,users) values (?,?,?,?,?,?,?,?)&quot;);</span>
+<span class="nc" id="L36">            stmt.setString(1,u.getNome());</span>
+<span class="nc" id="L37">             stmt.setString(2,u.getCPF());</span>
+<span class="nc" id="L38">             stmt.setString(3,u.getRG());</span>
+<span class="nc" id="L39">             stmt.setString(4,u.getTelefone());</span>
+<span class="nc" id="L40">             stmt.setString(5,u.getEndereco());</span>
+<span class="nc" id="L41">             stmt.setString(6,u.getTipo());</span>
+<span class="nc" id="L42">             stmt.setString(7,u.getSenha());</span>
+<span class="nc" id="L43">             stmt.setString(8,u.getUser());</span>
+<span class="nc" id="L44">             stmt.executeUpdate();</span>
+            
+<span class="nc" id="L46">        } catch (SQLException ex) {</span>
+<span class="nc" id="L47">            Logger.getLogger(UsuariosDAOImp.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L49">            Conexao.closeConnection(con, stmt);</span>
+        }    
+<span class="nc" id="L51">    }</span>
+
+    
+    /**
+     * Deleta no Banco de Dados as informações de um Administrador
+     * @param u 
+     */
+    public void DeletarAdmin(Administradores u) {
+<span class="nc" id="L59">         con=Conexao.getConnection();</span>
+<span class="nc" id="L60">        PreparedStatement stmt=null;</span>
+        try {
+<span class="nc" id="L62">            stmt=con.prepareStatement(&quot;DELETE FROM Admin WHERE cpf like '&quot;+u.getCPF()+&quot;'&quot;);</span>
+<span class="nc" id="L63">            stmt.executeUpdate();</span>
+<span class="nc" id="L64">        } catch (SQLException ex) {</span>
+<span class="nc" id="L65">            Logger.getLogger(UsuariosDAOImp.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L67">            Conexao.closeConnection(con, stmt);</span>
+        }
+<span class="nc" id="L69">    }</span>
+
+    
+     /**
+     * Atualiza no Banco de Dados as informações de um Administrador
+     * @param u
+     * @param cpf
+     */
+    public void UpdateAdmin(Administradores u, String cpf) {
+<span class="nc" id="L78">         con=Conexao.getConnection();</span>
+<span class="nc" id="L79">         PreparedStatement stmt=null;</span>
+         try {
+<span class="nc" id="L81">            stmt=con.prepareStatement(&quot;UPDATE Admin SET nome = ?,cpf = ?,rg = ?,telefone = ?,endereco = ?,tipo =?,senha=?,users=? WHERE cpf like '&quot;+cpf+&quot;'&quot;);</span>
+<span class="nc" id="L82">                 stmt.setString(1,u.getNome());</span>
+<span class="nc" id="L83">                 stmt.setString(2,u.getCPF());</span>
+<span class="nc" id="L84">                 stmt.setString(3,u.getRG());</span>
+<span class="nc" id="L85">                 stmt.setString(4,u.getTelefone());</span>
+<span class="nc" id="L86">                 stmt.setString(5,u.getEndereco());</span>
+<span class="nc" id="L87">                 stmt.setString(6,u.getTipo());</span>
+<span class="nc" id="L88">                 stmt.setString(7,u.getSenha());</span>
+<span class="nc" id="L89">                 stmt.setString(8,u.getUser());</span>
+                
+<span class="nc" id="L91">            stmt.executeUpdate();</span>
+<span class="nc" id="L92">        } catch (SQLException ex) {</span>
+<span class="nc" id="L93">            Logger.getLogger(UsuariosDAOImp.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L95">            Conexao.closeConnection(con, stmt);</span>
+        }
+<span class="nc" id="L97">    }</span>
+
+    
+    /**
+    * Pesquisa um ou mais administradores através de uma palavra-chave
+    * @param pesquisa
+    * @return ArrayList
+    */
+    public ArrayList&lt;Administradores&gt; BuscarAdministradores(String pesquisa) {
+<span class="nc" id="L106">        con =getConnection();</span>
+<span class="nc" id="L107">        ArrayList&lt;Administradores&gt; array= new ArrayList();</span>
+<span class="nc" id="L108">        ResultSet rs = null;</span>
+<span class="nc" id="L109">        PreparedStatement stmt = null;</span>
+        String aux;
+<span class="nc" id="L111">        Administradores a=null;</span>
+        try {
+<span class="nc" id="L113">            stmt = con.prepareStatement(&quot;SELECT * FROM Admin WHERE nome like '%&quot;+pesquisa+&quot;%' &quot;</span>
+                            + &quot;or cpf like '%&quot;+pesquisa+&quot;%' &quot;
+                            + &quot;or rg like '%&quot;+pesquisa+&quot;%' &quot;
+                            + &quot;or endereco like '%&quot;+pesquisa+&quot;%'&quot;
+                            + &quot;or tipo like '%&quot;+pesquisa+&quot;%' ORDER BY nome ASC&quot;);
+<span class="nc" id="L118">            rs = stmt.executeQuery();</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">            while (rs.next()) {                </span>
+                
+<span class="nc" id="L121">                    a=new Administradores(rs.getString(&quot;nome&quot;),rs.getString(&quot;cpf&quot;),rs.getString(&quot;rg&quot;),rs.getString(&quot;telefone&quot;),rs.getString(&quot;endereco&quot;),rs.getString(&quot;senha&quot;),rs.getString(&quot;users&quot;),rs.getString(&quot;tipo&quot;));</span>
+                
+                
+<span class="nc" id="L124">                array.add(a);</span>
+            }
+            
+            
+<span class="nc" id="L128">        } catch (SQLException ex) {</span>
+<span class="nc" id="L129">            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L131">            closeConnection(con, stmt, rs);</span>
+<span class="nc" id="L132">            return array;</span>
+        }
+    }
+
+    
+    /**
+     * Mostra todos o Administradores registrados no Banco de Dados
+     * @return  ArrayList
+     */
+    public ArrayList&lt;Administradores&gt; ListaAdministradores() {
+<span class="nc" id="L142">       con=getConnection();</span>
+<span class="nc" id="L143">        PreparedStatement stmt=null;</span>
+<span class="nc" id="L144">        ResultSet rs=null;</span>
+<span class="nc" id="L145">        ArrayList&lt;Administradores&gt; array=new ArrayList();</span>
+<span class="nc" id="L146">        Administradores a=null;</span>
+        try {
+            
+<span class="nc" id="L149">            stmt=con.prepareStatement(&quot;SELECT * FROM Admin ORDER BY nome ASC&quot;);</span>
+<span class="nc" id="L150">           rs= stmt.executeQuery();</span>
+           
+<span class="nc bnc" id="L152" title="All 2 branches missed.">            while (rs.next()) {    </span>
+<span class="nc" id="L153">                a=new Administradores(rs.getString(&quot;nome&quot;),rs.getString(&quot;cpf&quot;),rs.getString(&quot;rg&quot;),rs.getString(&quot;telefone&quot;),rs.getString(&quot;endereco&quot;),rs.getString(&quot;senha&quot;),rs.getString(&quot;users&quot;),rs.getString(&quot;tipo&quot;));</span>
+<span class="nc" id="L154">                array.add(a);</span>
+            }
+            
+<span class="nc" id="L157">        } catch (SQLException ex) {</span>
+<span class="nc" id="L158">            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L160">            closeConnection(con, stmt, rs);</span>
+<span class="nc" id="L161">            return array;</span>
+        }
+    }
+
+    
+    /**
+     * Verifica se as credencias do Administrador estão corretas e criando um objeto do tipo Administradores
+     * @param nome
+     * @param senha
+     * @return Administradores
+     */
+    public Administradores VerificarAdmin(String nome, String senha) {
+<span class="nc" id="L173">       con =getConnection();</span>
+<span class="nc" id="L174">        ResultSet rs = null;</span>
+<span class="nc" id="L175">        PreparedStatement stmt = null;</span>
+        String aux;
+<span class="nc" id="L177">        Administradores a=null;</span>
+        try {
+<span class="nc" id="L179">            stmt = con.prepareStatement(&quot;SELECT * FROM Admin WHERE users like '&quot;+nome+&quot;' &quot;</span>
+                            + &quot;and senha like '&quot;+senha+&quot;' &quot;);
+<span class="nc" id="L181">            rs = stmt.executeQuery();</span>
+           
+                
+<span class="nc bnc" id="L184" title="All 2 branches missed.">            if (rs.next()) {</span>
+<span class="nc" id="L185">               a=new Administradores(rs.getString(&quot;nome&quot;),rs.getString(&quot;cpf&quot;),rs.getString(&quot;rg&quot;),rs.getString(&quot;telefone&quot;),rs.getString(&quot;endereco&quot;),rs.getString(&quot;senha&quot;),rs.getString(&quot;users&quot;),rs.getString(&quot;tipo&quot;));</span>
+            }else{
+<span class="nc" id="L187">             a=new Administradores(&quot;n&quot;, &quot;n&quot;, &quot;n&quot;, &quot;n&quot;, &quot;n&quot;, &quot;n&quot;, &quot;n&quot;, &quot;n&quot;);</span>
+            }
+<span class="nc" id="L189">        } catch (SQLException ex) {</span>
+<span class="nc" id="L190">            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L192">            closeConnection(con, stmt, rs);</span>
+<span class="nc" id="L193">            return a;</span>
+        }
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

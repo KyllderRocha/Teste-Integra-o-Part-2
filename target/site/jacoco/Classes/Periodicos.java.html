@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Periodicos.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">Classes</a> &gt; <span class="el_source">Periodicos.java</span></div><h1>Periodicos.java</h1><pre class="source lang-java linenums">
+package Classes;
+
+
+
+
+import Modelo.Obra;
+
+
+
+
+/**
+ * Classe Periodicos, implementado por obra
+ * @author Kyllder, Pedro e Thiago
+ * @version 1.0
+ */
+
+public class Periodicos implements Obra{
+
+        /**Uma String que armazena a editora do Periodico*/
+        private String Editora;
+        /**Uma String que armazena o nome do Periodico*/
+        private String nome;
+        /**Uma String que armazena o assunto do Periodico*/
+        private String assunto;
+        /**Um inteiro que armazena o codigo do Periodico*/
+        private final int codigo;
+        /**Uma String que armazena o número do Periodico*/
+        private String numero;
+        /**Um inteiro que armazena a quantidade de cópias do Periodico*/
+        private int copias;
+
+/**
+
+* Construtor da classe
+     * @param nome o nome do Periodico
+     * @param editora a editora do Periodico
+     * @param Assunto o assunto do Periodico
+     * @param numero o numero do Periodico
+     * @param copias a quantidade de copias do Periodico
+     * @param cod o codigo do Periodico
+*/
+
+<span class="nc" id="L44">public Periodicos(String nome,String editora,String Assunto,String numero,int copias, int cod){</span>
+
+<span class="nc" id="L46">this.nome = nome;</span>
+
+<span class="nc" id="L48">this.numero = numero;</span>
+
+<span class="nc" id="L50">this.Editora=editora;</span>
+
+<span class="nc" id="L52">this.assunto=Assunto;</span>
+
+<span class="nc" id="L54">this.codigo= cod;</span>
+
+<span class="nc" id="L56">this.copias=copias;</span>
+
+<span class="nc" id="L58">}</span>
+
+/**
+
+     * Metodo para retorno do nome do Periodico
+
+     * @return o nome
+
+     */
+
+public String getNome() {
+
+<span class="nc" id="L70">return nome;</span>
+
+}
+
+/** 
+* Metodo para modificar o nome do Periodico
+* @param nome o novo nome
+*/
+
+public void setNome(String nome) {
+
+<span class="nc" id="L81">this.nome = nome;</span>
+
+<span class="nc" id="L83">}</span>
+
+/**
+     * Metodo para retorno do numero do Periodico
+     * @return o numero
+     */
+
+public String getNumero() {
+
+<span class="nc" id="L92">return numero;</span>
+
+}
+
+/**
+
+     * Metodo para retorno do autor do Periodico
+
+     * @return o autor
+
+     */
+
+    
+
+    public String getAutor() {
+
+<span class="nc" id="L108">       return null;</span>
+
+    }
+
+    /**
+
+     * Metodo para retorno do assunto do Periodico
+
+     * @return o assunto
+
+     */
+
+    
+
+    public String getAssunto() {
+
+<span class="nc" id="L124">        return assunto;</span>
+
+    }
+
+    /** 
+
+* Metodo para modificar o assunto do Periodico
+* @param assunto o novo assunto
+
+*/
+
+    
+
+    public void setAssunto(String assunto) {
+
+<span class="nc" id="L139">        this.assunto=assunto;</span>
+
+<span class="nc" id="L141">    }</span>
+
+    /**
+     * Metodo para retorno do tipo 
+     * @return o tipo de Obra
+     */
+
+    
+
+    public String getTipo() {
+
+<span class="nc" id="L152">       return &quot;Periodicos&quot;;</span>
+
+    }
+
+    /**
+
+     * Metodo para retorno do codigo do Periodico 
+
+     * @return o codigo
+
+     */
+
+    
+
+    public int getCod() {
+
+<span class="nc" id="L168">        return codigo;</span>
+
+    }
+
+    /** 
+
+* Metodo para modificar o autor do Periodico
+* @param autor o nome do novo autor
+
+*/
+
+    
+
+    public void setAutor(String autor) {
+
+        
+
+<span class="nc" id="L185">    }</span>
+
+    /** 
+
+* Metodo para modificar a editora do Periodico
+* @param editora a nova editora
+
+*/
+
+    
+
+    public void setEditora(String editora) {
+<span class="nc" id="L197">        this.Editora=editora;</span>
+<span class="nc" id="L198">    }</span>
+
+    /*
+     * Metodo para retorno da editora do Periodico 
+     * @return a editora
+     */
+
+    
+
+    public String getEditora() {
+
+<span class="nc" id="L209">         return Editora;</span>
+
+    }
+
+    /** 
+
+* Metodo para modificar o genero do Periodico
+* @param genero o novo gênero
+
+*/
+
+    
+
+    public void setGenero(String genero) {
+
+        
+
+<span class="nc" id="L226">    }</span>
+
+    /**
+     * Metodo para retorno do genero do Periodico 
+     * @return o gênero
+
+     */
+
+    
+
+    public String getGenero() {
+
+<span class="nc" id="L238">         return null;</span>
+
+    }
+
+    /** 
+
+* Metodo para modificar o numero de Periodicoe
+* @param numero o novo numero
+
+*/
+
+    
+
+    public void setNumero(String numero) {
+<span class="nc" id="L252">         this.numero=numero;</span>
+<span class="nc" id="L253">    }</span>
+
+    /**
+
+     * Metodo para retorno do numero de copias dos Periodicos 
+     * @return a quantidade de cópias
+     */
+
+    
+
+    public int getCopias() {
+
+<span class="nc" id="L265">        return copias;</span>
+
+    }
+
+    /** 
+* Metodo para modificar o numero de copias de Periodicoe
+* @param n a nova quantidade de cópias
+
+*/
+
+    
+
+    public void setCopias(int n) {
+
+<span class="nc" id="L279">        this.copias=n;</span>
+
+<span class="nc" id="L281">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

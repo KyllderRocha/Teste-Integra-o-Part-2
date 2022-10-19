@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerObra.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">ControllerObra.java</span></div><h1>ControllerObra.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Controller;
+
+import Modelo.Obra;
+import ModeloDAO.ObraDAOImp;
+import View.TelaAddObra;
+import View.TelaDeletarObra;
+import View.TelaEditarO;
+import View.TelaEditarObra;
+import View.TelaVisualizarObras;
+import java.util.ArrayList;
+
+/**
+ * O Controller serve como ligação entre o DAO e o View
+ * @author Kyllder, Pedro e Thiago
+ */
+<span class="nc" id="L21">public class ControllerObra {</span>
+    /**
+    * Atributo para usar as ações relacionadas ao Banco de Dados
+    */
+<span class="nc" id="L25">    private ObraDAOImp dao= new ObraDAOImp();</span>
+           /**
+            * Método que irá editar uma Obra
+            * @param o a Obra já alterada
+            */ 
+    public void Editar(Obra o){
+<span class="nc" id="L31">        dao.UpdateObra(o);</span>
+<span class="nc" id="L32">    }</span>
+    /**
+     * Método que irá adicionar uma Obra
+     * @param o a Obra a ser adicionada
+     */
+    public void Adcionar(Obra o){
+<span class="nc" id="L38">        dao.InsereObra(o);</span>
+<span class="nc" id="L39">    }/**</span>
+     * Método que irá Remover uma Obra
+     * @param o  Obra a ser removida
+     */
+    public void Remover(Obra o){
+<span class="nc" id="L44">        dao.DeletarObra(o);</span>
+<span class="nc" id="L45">    } /**</span>
+     * Método que irá mostrar uma Obra por meio de uma palavra-chave
+     * @param pesquisa o texto a ser pesquisado
+     * @return ArrayList
+     */
+    public ArrayList&lt;Obra&gt; Buscar(String pesquisa){
+<span class="nc" id="L51">        return dao.BuscarObras(pesquisa);</span>
+    }/**
+     *Método que irá mostrar todas as Obras cadastradas no Banco de Dados
+     * @return ArrayList
+     */
+    public ArrayList&lt;Obra&gt; Listar(){
+<span class="nc" id="L57">        return dao.ListaObras();</span>
+    }/**
+     * Método que irá chama a TelaAddObra
+     * @see TelaAddObra
+     */
+    public void TelaAdcionar(){
+<span class="nc" id="L63">        TelaAddObra add = new TelaAddObra();</span>
+<span class="nc" id="L64">        add.setVisible(true);</span>
+<span class="nc" id="L65">    }/**</span>
+     * Método que irá chamar TelaDeletarObra
+     * @see TelaDeletarObra
+     */
+    public void TelaRemover(){
+<span class="nc" id="L70">        TelaDeletarObra deletar = new TelaDeletarObra();</span>
+<span class="nc" id="L71">        deletar.setVisible(true);</span>
+<span class="nc" id="L72">    }/**</span>
+     * Método que irá chamar a TelaEditarObra
+     * @see TelaEditarObra
+     */
+    public void TelaEditar(){
+<span class="nc" id="L77">        TelaEditarObra e = new TelaEditarObra();</span>
+<span class="nc" id="L78">        e.setVisible(true);</span>
+<span class="nc" id="L79">    }/**</span>
+     * Método que irá chamar a TelaEditar0
+     * @param u a Obra que se quer alterar
+     * @param model se quer continuar com o modelo  
+     * @param pai o JFrame pai da tela
+     * @see TelaEditarO
+     */
+    public void TelaO(Obra u,boolean model,java.awt.Frame pai){
+<span class="nc" id="L87">        TelaEditarO editar = new TelaEditarO (pai, model,u);</span>
+<span class="nc" id="L88">        editar.setVisible(true);</span>
+        
+<span class="nc" id="L90">    }/**</span>
+     * Método que irá chamar TelaVisualizarObras
+     * @see TelaVisualizarObras
+     * 
+     */
+    public void TelaVisualizar(){
+<span class="nc" id="L96">        TelaVisualizarObras v = new TelaVisualizarObras();</span>
+<span class="nc" id="L97">        v.setVisible(true);</span>
+<span class="nc" id="L98">    }/**</span>
+     * Método que irá retornar o Cod para a Obra
+     * @return Int - código da Obra
+     */
+    public int getCod(){
+<span class="nc" id="L103">        return dao.getCod();</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

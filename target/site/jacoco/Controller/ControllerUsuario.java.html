@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerUsuario.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">ControllerUsuario.java</span></div><h1>ControllerUsuario.java</h1><pre class="source lang-java linenums">package Controller;
+
+import Modelo.Usuarios;
+import ModeloDAO.UsuariosDAOImp;
+import View.TelaAddUsuario;
+import View.TelaDeletarUsuarios;
+import View.TelaEditarU;
+import View.TelaEditarUsuario;
+import View.TelaVisualizarUsuarios;
+import java.util.ArrayList;
+   
+/**
+ * O Controller serve como ligação entre o DAO e o View
+ * @author Kyllder, Pedro e Thiago
+ */
+<span class="nc" id="L16">public class ControllerUsuario {</span>
+    /**
+    * Atributo para usar as ações relacionadas ao Banco de Dados
+    */
+<span class="nc" id="L20">    private UsuariosDAOImp dao= new UsuariosDAOImp();</span>
+    /**
+     *Método que irá atualizar um Usuário no Banco de Dados
+     * @param u o Usuário já alterado
+     * @param cpf o cpf do Usuário antes de alterar
+     */
+    public void Editar(Usuarios u,String cpf){
+<span class="nc" id="L27">        dao.UpdateUsuario(u, cpf);</span>
+<span class="nc" id="L28">    }</span>
+    /**
+     *Método que irá inserir um Usuário no Banco de Dados
+     * @param u o Usuário a ser adicionado
+     */
+    public void Adcionar(Usuarios u){
+<span class="nc" id="L34">        dao.InsereUsuario(u);</span>
+<span class="nc" id="L35">    }</span>
+    /**
+     *Método que irá deletar um Usuário no Banco de Dados
+     * @param u Usuário a ser deletado
+     */
+    public void Remover(Usuarios u){
+<span class="nc" id="L41">        dao.DeletarUsuario(u);</span>
+<span class="nc" id="L42">    }</span>
+    /**
+     * Método que irá mostrar um ou mais Usuários por meio de uma palavra-chave
+     * @param pesquisa o texto a ser pesquisado
+     * @return ArrayList
+     */
+    public ArrayList&lt;Usuarios&gt; Buscar(String pesquisa){
+<span class="nc" id="L49">        return dao.BuscarUsuarios(pesquisa);</span>
+    }
+    /**
+     *Método que irá mostrar todas os Usuários cadastrados no Banco de Dados
+     * @return ArrayList
+     */
+    public ArrayList&lt;Usuarios&gt; Listar(){
+<span class="nc" id="L56">        return dao.ListaUsuarios();</span>
+    }/**
+     * Método que irá chamar a TelaAddUsuario
+     * @see TelaAddUsuario
+     */
+    public void TelaAdcionar(){
+<span class="nc" id="L62">        TelaAddUsuario add = new TelaAddUsuario();</span>
+<span class="nc" id="L63">        add.setVisible(true);</span>
+<span class="nc" id="L64">    }/**</span>
+     * Método que irá chamar a TelaDeletarUsuarios
+     * @see TelaDeletarUsuarios
+     */
+    public void TelaRemover(){
+<span class="nc" id="L69">        TelaDeletarUsuarios deletar = new TelaDeletarUsuarios();</span>
+<span class="nc" id="L70">        deletar.setVisible(true);</span>
+<span class="nc" id="L71">    }/**</span>
+     * Método que irá chamar a TelaEditarUsuario
+     * @see TelaEditarUsuario
+     */
+    public void TelaEditar(){
+<span class="nc" id="L76">        TelaEditarUsuario e = new TelaEditarUsuario();</span>
+<span class="nc" id="L77">        e.setVisible(true);</span>
+<span class="nc" id="L78">    }/**</span>
+     * Método que irá chamar TelaU
+     * @param u o Usuário que se quer alterar
+     * @param model se quer continuar com o modelo
+     * @param pai a JFrame pai da tela
+     * @see TelaEditarU
+     */
+    public void TelaU(Usuarios u,boolean model,java.awt.Frame pai){
+<span class="nc" id="L86">        TelaEditarU editar = new TelaEditarU (pai, model,u);</span>
+<span class="nc" id="L87">        editar.setVisible(true);</span>
+        
+<span class="nc" id="L89">    }/**</span>
+     * Método que irá chamar TelaVisualizarUsuarios
+     * @see TelaVisualizarUsuarios
+     */
+    public void TelaVisualizar(){
+<span class="nc" id="L94">        TelaVisualizarUsuarios v = new TelaVisualizarUsuarios();</span>
+<span class="nc" id="L95">        v.setVisible(true);</span>
+<span class="nc" id="L96">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

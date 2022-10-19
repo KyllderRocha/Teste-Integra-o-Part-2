@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerAdmin.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">ControllerAdmin.java</span></div><h1>ControllerAdmin.java</h1><pre class="source lang-java linenums">
+package Controller;
+
+import Classes.Administradores;
+import ModeloDAO.AdministradoresDAOImp;
+import View.TelaAddAdmin;
+import View.TelaDeletarAdmin;
+import View.TelaEditarA;
+import View.TelaEditarAdmin;
+import View.TelaVisualizarAdmin;
+import java.util.ArrayList;
+
+/**
+ * O Controller irá servir como ligação entre o DAO e o View
+ * @author Kyllder, Pedro e Thiago
+ */
+<span class="nc" id="L17">public class ControllerAdmin {</span>
+   /**
+    * Atributo para usar as ações relacionadas ao Banco de Dados
+    */
+<span class="nc" id="L21">    private AdministradoresDAOImp dao= new AdministradoresDAOImp();</span>
+    /**
+     * Método para Atualizar um Administrador no Banco de Dados
+     * @param a o Administrador depois de ser alterado
+     * @param cpf  o cpf do Administrador antes de ser alterado
+     */
+    public void Editar(Administradores a,String cpf){
+<span class="nc" id="L28">        dao.UpdateAdmin(a, cpf);</span>
+<span class="nc" id="L29">    }/**</span>
+     * Método para inserir um Administrador no Banco de Dados
+     * @param a  o Administrador a ser inserido
+     */
+    public void Adcionar(Administradores a){
+<span class="nc" id="L34">        dao.InsereAdmin(a);</span>
+<span class="nc" id="L35">    }</span>
+    /**
+     * Método para deletar um Administrador no Banco de Dados
+     * @param a o Administrador a ser removido
+     */
+    public void Remover(Administradores a){
+<span class="nc" id="L41">        dao.DeletarAdmin(a);</span>
+<span class="nc" id="L42">    }</span>
+    /**
+     * Método que verifica se as credencias do Administrador estão corretas e cria um objeto do tipo Administradores
+     * @param nome o nme do Administrador
+     * @param senha  senha do Administrador
+     * @return o Administrador verificado
+     */
+    public Administradores Verificar(String nome,String senha){
+<span class="nc" id="L50">       return dao.VerificarAdmin(nome, senha);</span>
+    }
+    /**
+    * Pesquisa um ou mais administradores através de uma palavra-chave
+    * @param pesquisa o texto a ser pesquisado
+    * @return ArrayList - Contendo o resultado dessa pesquisa
+    */
+    public ArrayList&lt;Administradores&gt; Buscar(String pesquisa){
+<span class="nc" id="L58">        return dao.BuscarAdministradores(pesquisa);</span>
+    }/**
+     * Mostra todos o Administradores registrados no Banco
+     * @return  ArrayList - Contendo todos os Administradores registrados no Banco de Dados
+     */
+    public ArrayList&lt;Administradores&gt; Listar(){
+<span class="nc" id="L64">        return dao.ListaAdministradores();</span>
+    }/**
+     * Método que chama a tela &quot;TelaAddAdmin&quot;
+     * @see TelaAddAdmin
+     */
+    public void TelaAdcionar(){
+<span class="nc" id="L70">        TelaAddAdmin add = new TelaAddAdmin();</span>
+<span class="nc" id="L71">        add.setVisible(true);</span>
+<span class="nc" id="L72">    }/**</span>
+     * Método que chama a tela &quot;TelaDeletarAdmin&quot;
+     * @see TelaDeletarAdmin
+     */
+    public void TelaRemover(){
+<span class="nc" id="L77">        TelaDeletarAdmin deletar = new TelaDeletarAdmin();</span>
+<span class="nc" id="L78">        deletar.setVisible(true);</span>
+<span class="nc" id="L79">    }/**</span>
+     * Método que chama a tela &quot;TelaEditarAdmin&quot;
+     * @see TelaEditarAdmin
+     */
+    public void TelaEditar(){
+<span class="nc" id="L84">        TelaEditarAdmin e = new TelaEditarAdmin();</span>
+<span class="nc" id="L85">        e.setVisible(true);</span>
+<span class="nc" id="L86">    }</span>
+    
+    /**
+     * Método que chama a tela &quot;TelaEditarA&quot;
+     * @param a o Administrador a ser alterado
+     * @param model se quer continuar com model
+     * @param pai o JFrame pai da janela
+     * @see TelaEditarA
+     */
+    public void TelaA(Administradores a,boolean model,java.awt.Frame pai){
+<span class="nc" id="L96">        TelaEditarA editar = new TelaEditarA(pai, model,a);</span>
+<span class="nc" id="L97">        editar.setVisible(true);</span>
+        
+<span class="nc" id="L99">    }/**</span>
+     * Método que chama a tela &quot;TelaVisualizarAdmin&quot;
+     * @see TelaVisualizarAdmin
+     */
+    public void TelaVisualizar(){
+<span class="nc" id="L104">        TelaVisualizarAdmin v = new TelaVisualizarAdmin();</span>
+<span class="nc" id="L105">        v.setVisible(true);</span>
+<span class="nc" id="L106">    }</span>
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

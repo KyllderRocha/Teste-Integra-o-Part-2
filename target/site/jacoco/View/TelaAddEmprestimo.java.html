@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TelaAddEmprestimo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">View</a> &gt; <span class="el_source">TelaAddEmprestimo.java</span></div><h1>TelaAddEmprestimo.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package View;
+
+import Classes.Emprestimo;
+import Controller.ControllerEmprestimo;
+import Controller.ControllerObra;
+import Controller.ControllerUsuario;
+import Modelo.Obra;
+import Modelo.Usuarios;
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ * Classe para a criação da tela que adiciona um Emprestimo.
+ * @author Kyllder
+ * @author Thiago
+ * @author Pedro
+ * @version 1.0
+ */
+public class TelaAddEmprestimo extends javax.swing.JFrame {
+   /**Um objeto do Controller de Emprestimos.
+     *@see ControllerEmprestimo*/
+<span class="nc" id="L30">    private ControllerEmprestimo ce =new ControllerEmprestimo();</span>
+    /**Um ArrayList que armazenas todas as obras*/
+<span class="nc" id="L32">    private ArrayList&lt;Obra &gt; arrayO= new ArrayList();</span>
+    /**Um objeto do default table model, relacionado a tabela de obras.
+     *@see DefaultTableModel*/
+    private DefaultTableModel dtmO;
+    /**Um objeto do Controller de Obras.
+     *@see ControllerObra*/
+<span class="nc" id="L38">    private ControllerObra co =new ControllerObra();</span>
+    /**Um objeto do Controller de Usuario.
+     *@see ControllerUsuario*/
+<span class="nc" id="L41">    private ControllerUsuario cobre =new ControllerUsuario();</span>
+    /**Um ArrayList que armazenas todos os usuarios*/
+<span class="nc" id="L43">    private ArrayList&lt;Usuarios&gt; arrayU= new ArrayList();</span>
+     /**Um objeto do default table model, relacionado a tabela de usuarios.
+     *@see DefaultTableModel*/
+    private DefaultTableModel dtmU;
+     /**Uma String que armazena o nome do administrador*/
+    private String Admin;
+    /**
+     * Construtor da classe, onde são inicializados todos os componentes da tela
+     * e onde são adicionados os dados da tabela 
+     * @param Admin o nome do Administrador que está logado
+     */
+<span class="nc" id="L54">    public TelaAddEmprestimo(String Admin) { </span>
+<span class="nc" id="L55">        initComponents();</span>
+<span class="nc" id="L56">        this.Admin=Admin;</span>
+        
+<span class="nc" id="L58">        dtmO = (DefaultTableModel)TabelaObra.getModel();    </span>
+<span class="nc" id="L59">        arrayO=co.Listar();</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        if (!arrayO.isEmpty()) {     </span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">            for (Obra aux: arrayO) {</span>
+<span class="nc" id="L62">                String disponivel=&quot;Não&quot;;</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">                if (ce.CopiaDisponivel(aux.getNome(),aux.getCopias())) {</span>
+<span class="nc" id="L64">                    disponivel=&quot;Sim&quot;;</span>
+                }
+<span class="nc" id="L66">            String a[]={aux.getNome(),aux.getAutor(),aux.getAssunto(),aux.getEditora(),aux.getGenero(),aux.getNumero(),aux.getTipo(),disponivel};</span>
+<span class="nc" id="L67">            dtmO.addRow(a);</span>
+<span class="nc" id="L68">        }</span>
+        }
+        
+<span class="nc" id="L71">        dtmU = (DefaultTableModel)TabelaUsuario.getModel();</span>
+<span class="nc" id="L72">        arrayU=cobre.Listar();</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        if (!arrayU.isEmpty()) {           </span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">            for (Usuarios aux: arrayU) {</span>
+<span class="nc" id="L75">            String a[]={aux.getNome(),aux.getCPF(),aux.getRG(),aux.getTelefone(),aux.getEndereco(),aux.getTipo()};</span>
+<span class="nc" id="L76">            dtmU.addRow(a);</span>
+<span class="nc" id="L77">        }</span>
+        }
+<span class="nc" id="L79">    }</span>
+/**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L89">        jScrollPane2 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L90">        TabelaObra = new javax.swing.JTable();</span>
+<span class="nc" id="L91">        jScrollPane3 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L92">        TabelaUsuario = new javax.swing.JTable();</span>
+<span class="nc" id="L93">        txtBuscar = new javax.swing.JTextField();</span>
+<span class="nc" id="L94">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L95">        txtBuscarObra = new javax.swing.JTextField();</span>
+<span class="nc" id="L96">        jLabel3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L97">        Adicionar = new javax.swing.JButton();</span>
+<span class="nc" id="L98">        Cancelar = new javax.swing.JButton();</span>
+
+<span class="nc" id="L100">        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);</span>
+
+<span class="nc" id="L102">        TabelaObra.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+
+            },
+            new String [] {
+                &quot;Nome&quot;, &quot;Autor&quot;, &quot;Assunto&quot;, &quot;Editora&quot;, &quot;Gênero&quot;, &quot;Numero&quot;, &quot;Tipo&quot;, &quot;Disponivel&quot;
+            }
+<span class="nc" id="L109">        ) {</span>
+<span class="nc" id="L110">            Class[] types = new Class [] {</span>
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+<span class="nc" id="L113">            boolean[] canEdit = new boolean [] {</span>
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+<span class="nc" id="L118">                return types [columnIndex];</span>
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+<span class="nc" id="L122">                return canEdit [columnIndex];</span>
+            }
+        });
+<span class="nc" id="L125">        TabelaObra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {</span>
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L127">                TabelaObraMouseMoved(evt);</span>
+<span class="nc" id="L128">            }</span>
+        });
+<span class="nc" id="L130">        TabelaObra.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L132">                TabelaObraMouseClicked(evt);</span>
+<span class="nc" id="L133">            }</span>
+        });
+<span class="nc" id="L135">        jScrollPane2.setViewportView(TabelaObra);</span>
+
+<span class="nc" id="L137">        TabelaUsuario.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+
+            },
+            new String [] {
+                &quot;Nome&quot;, &quot;CPF&quot;, &quot;RG&quot;, &quot;Telefone&quot;, &quot;Endereço&quot;, &quot;Tipo&quot;
+            }
+<span class="nc" id="L144">        ) {</span>
+<span class="nc" id="L145">            Class[] types = new Class [] {</span>
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+<span class="nc" id="L148">            boolean[] canEdit = new boolean [] {</span>
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+<span class="nc" id="L153">                return types [columnIndex];</span>
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+<span class="nc" id="L157">                return canEdit [columnIndex];</span>
+            }
+        });
+<span class="nc" id="L160">        TabelaUsuario.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {</span>
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L162">                TabelaUsuarioMouseMoved(evt);</span>
+<span class="nc" id="L163">            }</span>
+        });
+<span class="nc" id="L165">        TabelaUsuario.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L167">                TabelaUsuarioMouseClicked(evt);</span>
+<span class="nc" id="L168">            }</span>
+        });
+<span class="nc" id="L170">        jScrollPane3.setViewportView(TabelaUsuario);</span>
+
+<span class="nc" id="L172">        txtBuscar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L174">                txtBuscarActionPerformed(evt);</span>
+<span class="nc" id="L175">            }</span>
+        });
+<span class="nc" id="L177">        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L179">                txtBuscarKeyReleased(evt);</span>
+<span class="nc" id="L180">            }</span>
+        });
+
+<span class="nc" id="L183">        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/magnifier.png&quot;))); // NOI18N</span>
+<span class="nc" id="L184">        jLabel1.setText(&quot;Procurar&quot;);</span>
+
+<span class="nc" id="L186">        txtBuscarObra.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L188">                txtBuscarObraActionPerformed(evt);</span>
+<span class="nc" id="L189">            }</span>
+        });
+<span class="nc" id="L191">        txtBuscarObra.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L193">                txtBuscarObraKeyReleased(evt);</span>
+<span class="nc" id="L194">            }</span>
+        });
+
+<span class="nc" id="L197">        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/magnifier.png&quot;))); // NOI18N</span>
+<span class="nc" id="L198">        jLabel3.setText(&quot;Procurar&quot;);</span>
+
+<span class="nc" id="L200">        Adicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/book_next.png&quot;))); // NOI18N</span>
+<span class="nc" id="L201">        Adicionar.setText(&quot;Adicionar&quot;);</span>
+<span class="nc" id="L202">        Adicionar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L204">                AdicionarActionPerformed(evt);</span>
+<span class="nc" id="L205">            }</span>
+        });
+
+<span class="nc" id="L208">        Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/delete.png&quot;))); // NOI18N</span>
+<span class="nc" id="L209">        Cancelar.setText(&quot;Cancelar&quot;);</span>
+<span class="nc" id="L210">        Cancelar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L212">                CancelarActionPerformed(evt);</span>
+<span class="nc" id="L213">            }</span>
+        });
+
+<span class="nc" id="L216">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L217">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L218">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L219">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L220">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L221">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L222">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L223">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L224">                            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L225">                                .addGap(20, 20, 20)</span>
+<span class="nc" id="L226">                                .addComponent(jLabel3)</span>
+<span class="nc" id="L227">                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L228">                                .addComponent(txtBuscarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 912, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L229">                            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L230">                                .addGap(274, 274, 274)</span>
+<span class="nc" id="L231">                                .addComponent(Adicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L232">                                .addGap(106, 106, 106)</span>
+<span class="nc" id="L233">                                .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L234">                        .addGap(0, 18, Short.MAX_VALUE))</span>
+<span class="nc" id="L235">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L236">                        .addContainerGap()</span>
+<span class="nc" id="L237">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L238">                            .addComponent(jScrollPane3)</span>
+<span class="nc" id="L239">                            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L240">                                .addComponent(jLabel1)</span>
+<span class="nc" id="L241">                                .addGap(18, 18, 18)</span>
+<span class="nc" id="L242">                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 899, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L243">                                .addGap(0, 0, Short.MAX_VALUE))</span>
+<span class="nc" id="L244">                            .addComponent(jScrollPane2))))</span>
+<span class="nc" id="L245">                .addContainerGap())</span>
+        );
+<span class="nc" id="L247">        layout.setVerticalGroup(</span>
+<span class="nc" id="L248">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L249">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L250">                .addContainerGap()</span>
+<span class="nc" id="L251">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L252">                    .addComponent(txtBuscarObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L253">                    .addComponent(jLabel3))</span>
+<span class="nc" id="L254">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L255">                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L256">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L257">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L258">                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L259">                    .addComponent(jLabel1))</span>
+<span class="nc" id="L260">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L261">                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L262">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L263">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L264">                    .addComponent(Adicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L265">                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L266">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+        );
+
+<span class="nc" id="L269">        pack();</span>
+<span class="nc" id="L270">        setLocationRelativeTo(null);</span>
+<span class="nc" id="L271">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+/**
+     *  Método Não faz nada foi, gerado sem querer
+     * 
+     */
+    private void TabelaObraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaObraMouseClicked
+
+<span class="nc" id="L278">    }//GEN-LAST:event_TabelaObraMouseClicked</span>
+/**
+     *  Método Não faz nada foi, gerado sem querer
+     * 
+     */
+    private void TabelaUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaUsuarioMouseClicked
+
+<span class="nc" id="L285">    }//GEN-LAST:event_TabelaUsuarioMouseClicked</span>
+/**
+     *  Método Não faz nada foi, gerado sem querer
+     * 
+     */
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+       
+<span class="nc" id="L292">    }//GEN-LAST:event_txtBuscarActionPerformed</span>
+    /**
+     * Método que atualiza a tabela de usuarios a cada vez que o campo de texto é alterado
+     * @param evt KeyEvent, Ação do Campo de texto ao ser digitado ou apagado algo
+     */
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+<span class="nc" id="L298">       dtmU =  (DefaultTableModel)TabelaUsuario.getModel();</span>
+<span class="nc bnc" id="L299" title="All 2 branches missed.">        if (!txtBuscar.getText().equals(&quot;&quot;)) {</span>
+<span class="nc" id="L300">            dtmU.setNumRows(0);</span>
+<span class="nc" id="L301">            ArrayList&lt;Usuarios&gt; array1=cobre.Buscar(txtBuscar.getText());</span>
+<span class="nc bnc" id="L302" title="All 2 branches missed.">            for (Usuarios aux : array1) {</span>
+<span class="nc" id="L303">                String a[]={aux.getNome(),aux.getCPF(),aux.getRG(),aux.getTelefone(),aux.getEndereco(),aux.getTipo()};</span>
+<span class="nc" id="L304">                dtmU.addRow(a);</span>
+<span class="nc" id="L305">            }</span>
+
+<span class="nc" id="L307">        }else{</span>
+<span class="nc" id="L308">            dtmU.setNumRows(0);</span>
+<span class="nc bnc" id="L309" title="All 2 branches missed.">            for (Usuarios aux : arrayU) {</span>
+<span class="nc" id="L310">                String a[]={aux.getNome(),aux.getCPF(),aux.getRG(),aux.getTelefone(),aux.getEndereco(),aux.getTipo()};</span>
+<span class="nc" id="L311">                dtmU.addRow(a);</span>
+<span class="nc" id="L312">            }</span>
+        }
+<span class="nc" id="L314">    }//GEN-LAST:event_txtBuscarKeyReleased</span>
+
+     /**  Método Não faz nada foi, gerado sem querer
+     * 
+     */
+    private void txtBuscarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarObraActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L321">    }//GEN-LAST:event_txtBuscarObraActionPerformed</span>
+/**
+     * Método que atualiza a tabela de Obra a cada vez que o campo de texto é alterado
+     * @param evt KeyEvent, Ação do Campo de texto ao ser digitado ou apagado algo
+     */
+    private void txtBuscarObraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarObraKeyReleased
+        
+<span class="nc bnc" id="L328" title="All 2 branches missed.">        if (!txtBuscarObra.getText().equals(&quot;&quot;)) {</span>
+<span class="nc" id="L329">            dtmO.setNumRows(0);</span>
+<span class="nc" id="L330">            ArrayList&lt;Obra&gt; array1=co.Buscar(txtBuscarObra.getText());</span>
+<span class="nc bnc" id="L331" title="All 2 branches missed.">            for (Obra aux : array1) {</span>
+<span class="nc" id="L332">                String disponivel=&quot;Não&quot;;</span>
+<span class="nc bnc" id="L333" title="All 2 branches missed.">                if (ce.CopiaDisponivel(aux.getNome(),aux.getCopias())) {</span>
+<span class="nc" id="L334">                    disponivel=&quot;Sim&quot;;</span>
+                }
+<span class="nc" id="L336">                String a[]={aux.getNome(),aux.getAutor(),aux.getAssunto(),aux.getEditora(),aux.getGenero(),aux.getNumero(),aux.getTipo(),disponivel};</span>
+<span class="nc" id="L337">                dtmO.addRow(a);</span>
+<span class="nc" id="L338">            }</span>
+
+<span class="nc" id="L340">        }else{</span>
+<span class="nc" id="L341">            dtmO.setNumRows(0);</span>
+<span class="nc bnc" id="L342" title="All 2 branches missed.">            for (Obra aux : arrayO) {</span>
+<span class="nc" id="L343">                String disponivel=&quot;Não&quot;;</span>
+<span class="nc bnc" id="L344" title="All 2 branches missed.">                if (ce.CopiaDisponivel(aux.getNome(),aux.getCopias())) {</span>
+<span class="nc" id="L345">                    disponivel=&quot;Sim&quot;;</span>
+                }
+<span class="nc" id="L347">                String a[]={aux.getNome(),aux.getAutor(),aux.getAssunto(),aux.getEditora(),aux.getGenero(),aux.getNumero(),aux.getTipo(),disponivel};</span>
+<span class="nc" id="L348">                dtmO.addRow(a);</span>
+<span class="nc" id="L349">            }</span>
+        }
+<span class="nc" id="L351">    }//GEN-LAST:event_txtBuscarObraKeyReleased</span>
+ /**
+     * Método que cancela a operação e fecha a fecha a tela 
+     * @param evt ActionEvent, Ação do botão sendo clicado
+     */
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L359">        this.dispose();</span>
+<span class="nc" id="L360">    }//GEN-LAST:event_CancelarActionPerformed</span>
+/**
+     * Método que cria um Emprestimo.
+     * @param evt ActionEvent, Ação do botão sendo clicado
+     */
+    private void AdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarActionPerformed
+<span class="nc bnc" id="L366" title="All 4 branches missed.">        if (TabelaObra.getSelectedRow()&gt;=0 &amp;&amp; TabelaUsuario.getSelectedRow()&gt;=0) {</span>
+<span class="nc" id="L367">            String nome = (String) TabelaObra.getValueAt(TabelaObra.getSelectedRow(),0);</span>
+<span class="nc" id="L368">            String assunto = (String) TabelaObra.getValueAt(TabelaObra.getSelectedRow(),2);</span>
+<span class="nc" id="L369">            String tipo = (String) TabelaObra.getValueAt(TabelaObra.getSelectedRow(),6);</span>
+<span class="nc" id="L370">            int copias=0;</span>
+<span class="nc bnc" id="L371" title="All 2 branches missed.">            for (Obra o : arrayO) {</span>
+<span class="nc bnc" id="L372" title="All 6 branches missed.">                if(o.getNome().equals(nome) &amp;&amp; o.getAssunto().equals(assunto) &amp;&amp; o.getTipo().equals(tipo)){</span>
+<span class="nc" id="L373">                    copias=o.getCopias();</span>
+<span class="nc" id="L374">                    break;</span>
+                }
+<span class="nc" id="L376">            }</span>
+            
+<span class="nc bnc" id="L378" title="All 2 branches missed.">            if (ce.CopiaDisponivel(nome, copias)) {</span>
+<span class="nc" id="L379">                Calendar dtPrevista = Calendar.getInstance();</span>
+<span class="nc" id="L380">                String cpf = (String) TabelaUsuario.getValueAt(TabelaUsuario.getSelectedRow(),1);</span>
+<span class="nc bnc" id="L381" title="All 2 branches missed.">                for (Usuarios aux : arrayU) {</span>
+<span class="nc bnc" id="L382" title="All 2 branches missed.">                if(aux.getCPF().equals(cpf)){</span>
+<span class="nc bnc" id="L383" title="All 2 branches missed.">                    if (aux.getDivida()&gt;0) {</span>
+<span class="nc" id="L384">                       ce.TelaDivida(this,true,aux.getDivida(), aux);</span>
+                    }
+                    break;
+                }
+<span class="nc" id="L388">            } </span>
+<span class="nc" id="L389">                arrayU=cobre.Listar();</span>
+<span class="nc bnc" id="L390" title="All 2 branches missed.">            for (Usuarios aux : arrayU) {</span>
+<span class="nc bnc" id="L391" title="All 2 branches missed.">                if(aux.getCPF().equals(cpf)){</span>
+<span class="nc bnc" id="L392" title="All 2 branches missed.">                    if (aux.getDivida()==0) {</span>
+<span class="nc" id="L393">                        dtPrevista.add(Calendar.DATE,aux.getDias());</span>
+<span class="nc" id="L394">                        Emprestimo e = new Emprestimo(aux.getNome(), Admin, (String)TabelaObra.getValueAt(TabelaObra.getSelectedRow(),0), dtPrevista, null, Calendar.getInstance());</span>
+<span class="nc" id="L395">                        ce.Adcionar(e);</span>
+<span class="nc" id="L396">                        dispose();</span>
+                    }
+                }
+<span class="nc" id="L399">            }</span>
+            
+<span class="nc" id="L401">            }else{</span>
+<span class="nc" id="L402">                JOptionPane.showMessageDialog(null,&quot;Cópias indisponíveis&quot;,&quot;Erro&quot;,JOptionPane.WARNING_MESSAGE);</span>
+            }
+            
+<span class="nc" id="L405">        }else{</span>
+<span class="nc" id="L406">            JOptionPane.showMessageDialog(null,&quot;Selecione ums Obra e um Usuário&quot;,&quot;Aviso&quot;,JOptionPane.ERROR_MESSAGE);</span>
+        }
+<span class="nc" id="L408">    }//GEN-LAST:event_AdicionarActionPerformed</span>
+    /**
+     * Método que cria o comentario dos valores da tabela de obra
+     * @param evt MouseEvent, ação de mover o mouse pela tabela
+     */
+    private void TabelaObraMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaObraMouseMoved
+<span class="nc" id="L414">        Point p = evt.getPoint(); </span>
+<span class="nc" id="L415">        int row = TabelaObra.rowAtPoint(p);</span>
+<span class="nc" id="L416">        int column = TabelaObra.columnAtPoint(p);</span>
+<span class="nc" id="L417">        TabelaObra.setToolTipText(String.valueOf(dtmO.getValueAt(row,column)));</span>
+<span class="nc" id="L418">    }//GEN-LAST:event_TabelaObraMouseMoved</span>
+/**
+     * Método que cria o comentario dos valores da tabela de usuario
+     * @param evt MouseEvent, ação de mover o mouse pela tabela
+     */
+    private void TabelaUsuarioMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaUsuarioMouseMoved
+<span class="nc" id="L424">        Point p = evt.getPoint(); </span>
+<span class="nc" id="L425">        int row = TabelaUsuario.rowAtPoint(p);</span>
+<span class="nc" id="L426">        int column = TabelaUsuario.columnAtPoint(p);</span>
+<span class="nc" id="L427">        TabelaUsuario.setToolTipText(String.valueOf(dtmU.getValueAt(row,column)));</span>
+<span class="nc" id="L428">    }//GEN-LAST:event_TabelaUsuarioMouseMoved</span>
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Adicionar;
+    private javax.swing.JButton Cancelar;
+    private javax.swing.JTable TabelaObra;
+    private javax.swing.JTable TabelaUsuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtBuscarObra;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

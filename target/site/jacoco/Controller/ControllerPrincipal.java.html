@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerPrincipal.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">ControllerPrincipal.java</span></div><h1>ControllerPrincipal.java</h1><pre class="source lang-java linenums">
+package Controller;
+
+import Modelo.Administrador;
+import View.TelaLogin;
+import View.TelaMenu;
+
+/** Classe para o Controller Principal.
+ * @author Kyllder
+ * @author Thiago
+ * @author Pedro
+ * @version 1.0
+ */
+
+<span class="nc" id="L15">public class ControllerPrincipal {</span>
+<span class="nc" id="L16">    private TelaLogin tl=null;</span>
+    /**
+     * Método Inicia a tela de Menu.
+     */
+    public void TelaMenu(){
+<span class="nc" id="L21">     TelaMenu tm= new TelaMenu();</span>
+<span class="nc" id="L22">     tm.setVisible(true);</span>
+<span class="nc" id="L23">    }</span>
+    /**
+     * Método Inicia a tela de login.
+     * @param pai a JFrame pai da tela
+     * @param modal se quer cntinuar com o modelo
+     */
+    public void TelaLogin(java.awt.Frame pai, boolean modal){
+<span class="nc" id="L30">     tl = new TelaLogin(pai,modal);</span>
+<span class="nc" id="L31">     tl.setVisible(true);</span>
+<span class="nc" id="L32">    }</span>
+    /**
+     * Método pega o Administador que fez o login.
+     * @return Administrador,que fez o login
+     */
+    public Administrador getAdmin(){
+<span class="nc" id="L38">        return tl.getAdmin();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

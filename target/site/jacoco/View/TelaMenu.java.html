@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TelaMenu.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">View</a> &gt; <span class="el_source">TelaMenu.java</span></div><h1>TelaMenu.java</h1><pre class="source lang-java linenums">package View;
+
+import Controller.ControllerAdmin;
+import Controller.ControllerEmprestimo;
+import Controller.ControllerObra;
+import Controller.ControllerPrincipal;
+import Controller.ControllerUsuario;
+import Modelo.Administrador;
+
+
+/** Classe para a tela de menu, onde será possível acessa todas as outras telas.
+ * @author Kyllder
+ * @author Thiago
+ * @author Pedro
+ * @version 1.0
+ */
+public class TelaMenu extends javax.swing.JFrame {
+    
+    /**Um objeto do Controller de Admiministradores
+     *@see ControllerAdmin*/
+    
+<span class="nc" id="L22">    private ControllerAdmin ca =new ControllerAdmin();</span>
+    
+    /**Um objeto do Controller de Usuário.
+     *@see ControllerUsuario*/
+    
+<span class="nc" id="L27">    private ControllerUsuario cobre =new ControllerUsuario();</span>
+    
+    /**Um objeto do Controller de Obras.
+     *@see ControllerObra*/
+    
+<span class="nc" id="L32">    private ControllerObra co =new ControllerObra(); </span>
+    
+    /**Um objeto do Controller de Emprestimos.
+     *@see ControllerEmprestimo*/
+    
+<span class="nc" id="L37">    private ControllerEmprestimo ce =new ControllerEmprestimo();</span>
+    
+    /**Um objeto do Controller Principal.
+     *@see ControllerPrincipal*/
+    
+<span class="nc" id="L42">    private ControllerPrincipal cp = new ControllerPrincipal();</span>
+    
+    /**Uma Objeto Administrador que vai armazenar o Administrador que fez o Login*/
+    
+    private Administrador Admin;
+
+    /**
+     * Construtor, onde eu chamo o Controller Principal para abrir a Tela de Login,
+     * para pegar o Administrador que fez o Login e também para verificar o tipo de dele.
+     */
+<span class="nc" id="L52">    public TelaMenu() {  </span>
+<span class="nc" id="L53">        initComponents();</span>
+<span class="nc" id="L54">        cp.TelaLogin(this, true);</span>
+<span class="nc" id="L55">        Admin=cp.getAdmin();</span>
+
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        if (!Admin.getTipo().equals(&quot;Gerente&quot;)) {</span>
+<span class="nc" id="L58">            MenuAdmin.setVisible(false);</span>
+        }
+        
+<span class="nc" id="L61">    }</span>
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L66">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L67">        jMenuBar1 = new javax.swing.JMenuBar();</span>
+<span class="nc" id="L68">        Novo = new javax.swing.JMenu();</span>
+<span class="nc" id="L69">        NovoObra = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L70">        DeletarObra = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L71">        EditarObra = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L72">        VisualizarObra = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L73">        jMenu2 = new javax.swing.JMenu();</span>
+<span class="nc" id="L74">        NovoUsuario = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L75">        DeletarUsuario = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L76">        EditarUsuario = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L77">        VisualizarUsuario = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L78">        Visualizar = new javax.swing.JMenu();</span>
+<span class="nc" id="L79">        NovoEmpres = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L80">        Devolucao = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L81">        Divida = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L82">        VisualizarEmpres = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L83">        MenuAdmin = new javax.swing.JMenu();</span>
+<span class="nc" id="L84">        NovoAdmin = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L85">        DeletarAdmin = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L86">        EditarAdmin = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L87">        VisualizarAdmin = new javax.swing.JMenuItem();</span>
+
+<span class="nc" id="L89">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L90">        setTitle(&quot;Menu&quot;);</span>
+<span class="nc" id="L91">        setMinimumSize(new java.awt.Dimension(940, 640));</span>
+<span class="nc" id="L92">        getContentPane().setLayout(null);</span>
+
+<span class="nc" id="L94">        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/depositphotos_71411393-stock-illustration-books-library-seamless-pattern-reading.jpg&quot;))); // NOI18N</span>
+<span class="nc" id="L95">        getContentPane().add(jLabel1);</span>
+<span class="nc" id="L96">        jLabel1.setBounds(-70, -420, 1020, 1030);</span>
+
+<span class="nc" id="L98">        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));</span>
+
+<span class="nc" id="L100">        Novo.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/book.png&quot;))); // NOI18N</span>
+<span class="nc" id="L101">        Novo.setText(&quot;Obra&quot;);</span>
+<span class="nc" id="L102">        Novo.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L104">                NovoActionPerformed(evt);</span>
+<span class="nc" id="L105">            }</span>
+        });
+
+<span class="nc" id="L108">        NovoObra.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/book_add.png&quot;))); // NOI18N</span>
+<span class="nc" id="L109">        NovoObra.setText(&quot;Novo&quot;);</span>
+<span class="nc" id="L110">        NovoObra.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L112">                NovoObraActionPerformed(evt);</span>
+<span class="nc" id="L113">            }</span>
+        });
+<span class="nc" id="L115">        Novo.add(NovoObra);</span>
+
+<span class="nc" id="L117">        DeletarObra.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/book_delete.png&quot;))); // NOI18N</span>
+<span class="nc" id="L118">        DeletarObra.setText(&quot;Deletar&quot;);</span>
+<span class="nc" id="L119">        DeletarObra.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L121">                DeletarObraActionPerformed(evt);</span>
+<span class="nc" id="L122">            }</span>
+        });
+<span class="nc" id="L124">        Novo.add(DeletarObra);</span>
+
+<span class="nc" id="L126">        EditarObra.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/book_edit.png&quot;))); // NOI18N</span>
+<span class="nc" id="L127">        EditarObra.setText(&quot;Editar&quot;);</span>
+<span class="nc" id="L128">        EditarObra.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L130">                EditarObraActionPerformed(evt);</span>
+<span class="nc" id="L131">            }</span>
+        });
+<span class="nc" id="L133">        Novo.add(EditarObra);</span>
+
+<span class="nc" id="L135">        VisualizarObra.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/book_addresses.png&quot;))); // NOI18N</span>
+<span class="nc" id="L136">        VisualizarObra.setText(&quot;Visualizar&quot;);</span>
+<span class="nc" id="L137">        VisualizarObra.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L139">                VisualizarObraActionPerformed(evt);</span>
+<span class="nc" id="L140">            }</span>
+        });
+<span class="nc" id="L142">        Novo.add(VisualizarObra);</span>
+
+<span class="nc" id="L144">        jMenuBar1.add(Novo);</span>
+
+<span class="nc" id="L146">        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/user.png&quot;))); // NOI18N</span>
+<span class="nc" id="L147">        jMenu2.setText(&quot;Usuários&quot;);</span>
+
+<span class="nc" id="L149">        NovoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/user_add.png&quot;))); // NOI18N</span>
+<span class="nc" id="L150">        NovoUsuario.setText(&quot;Novo&quot;);</span>
+<span class="nc" id="L151">        NovoUsuario.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L153">                NovoUsuarioActionPerformed(evt);</span>
+<span class="nc" id="L154">            }</span>
+        });
+<span class="nc" id="L156">        jMenu2.add(NovoUsuario);</span>
+
+<span class="nc" id="L158">        DeletarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/user_delete.png&quot;))); // NOI18N</span>
+<span class="nc" id="L159">        DeletarUsuario.setText(&quot;Deletar&quot;);</span>
+<span class="nc" id="L160">        DeletarUsuario.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L162">                DeletarUsuarioActionPerformed(evt);</span>
+<span class="nc" id="L163">            }</span>
+        });
+<span class="nc" id="L165">        jMenu2.add(DeletarUsuario);</span>
+
+<span class="nc" id="L167">        EditarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/user_edit.png&quot;))); // NOI18N</span>
+<span class="nc" id="L168">        EditarUsuario.setText(&quot;Editar&quot;);</span>
+<span class="nc" id="L169">        EditarUsuario.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L171">                EditarUsuarioActionPerformed(evt);</span>
+<span class="nc" id="L172">            }</span>
+        });
+<span class="nc" id="L174">        jMenu2.add(EditarUsuario);</span>
+
+<span class="nc" id="L176">        VisualizarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/group.png&quot;))); // NOI18N</span>
+<span class="nc" id="L177">        VisualizarUsuario.setText(&quot;Visualizar&quot;);</span>
+<span class="nc" id="L178">        VisualizarUsuario.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L180">                VisualizarUsuarioActionPerformed(evt);</span>
+<span class="nc" id="L181">            }</span>
+        });
+<span class="nc" id="L183">        jMenu2.add(VisualizarUsuario);</span>
+
+<span class="nc" id="L185">        jMenuBar1.add(jMenu2);</span>
+
+<span class="nc" id="L187">        Visualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/book_open.png&quot;))); // NOI18N</span>
+<span class="nc" id="L188">        Visualizar.setText(&quot;Emprestimo&quot;);</span>
+
+<span class="nc" id="L190">        NovoEmpres.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/book_next.png&quot;))); // NOI18N</span>
+<span class="nc" id="L191">        NovoEmpres.setText(&quot;Novo&quot;);</span>
+<span class="nc" id="L192">        NovoEmpres.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L194">                NovoEmpresActionPerformed(evt);</span>
+<span class="nc" id="L195">            }</span>
+        });
+<span class="nc" id="L197">        Visualizar.add(NovoEmpres);</span>
+
+<span class="nc" id="L199">        Devolucao.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/book_previous.png&quot;))); // NOI18N</span>
+<span class="nc" id="L200">        Devolucao.setText(&quot;Devolução&quot;);</span>
+<span class="nc" id="L201">        Devolucao.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L203">                DevolucaoActionPerformed(evt);</span>
+<span class="nc" id="L204">            }</span>
+        });
+<span class="nc" id="L206">        Visualizar.add(Devolucao);</span>
+
+<span class="nc" id="L208">        Divida.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/money.png&quot;))); // NOI18N</span>
+<span class="nc" id="L209">        Divida.setText(&quot;Divida&quot;);</span>
+<span class="nc" id="L210">        Divida.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L212">                DividaActionPerformed(evt);</span>
+<span class="nc" id="L213">            }</span>
+        });
+<span class="nc" id="L215">        Visualizar.add(Divida);</span>
+
+<span class="nc" id="L217">        VisualizarEmpres.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/box.png&quot;))); // NOI18N</span>
+<span class="nc" id="L218">        VisualizarEmpres.setText(&quot;Visualizar&quot;);</span>
+<span class="nc" id="L219">        VisualizarEmpres.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L221">                VisualizarEmpresActionPerformed(evt);</span>
+<span class="nc" id="L222">            }</span>
+        });
+<span class="nc" id="L224">        Visualizar.add(VisualizarEmpres);</span>
+
+<span class="nc" id="L226">        jMenuBar1.add(Visualizar);</span>
+
+<span class="nc" id="L228">        MenuAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/user_gray.png&quot;))); // NOI18N</span>
+<span class="nc" id="L229">        MenuAdmin.setText(&quot;Administradores&quot;);</span>
+
+<span class="nc" id="L231">        NovoAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/user_add.png&quot;))); // NOI18N</span>
+<span class="nc" id="L232">        NovoAdmin.setText(&quot;Novo&quot;);</span>
+<span class="nc" id="L233">        NovoAdmin.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L235">                NovoAdminActionPerformed(evt);</span>
+<span class="nc" id="L236">            }</span>
+        });
+<span class="nc" id="L238">        MenuAdmin.add(NovoAdmin);</span>
+
+<span class="nc" id="L240">        DeletarAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/user_delete.png&quot;))); // NOI18N</span>
+<span class="nc" id="L241">        DeletarAdmin.setText(&quot;Deletar&quot;);</span>
+<span class="nc" id="L242">        DeletarAdmin.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L244">                DeletarAdminActionPerformed(evt);</span>
+<span class="nc" id="L245">            }</span>
+        });
+<span class="nc" id="L247">        MenuAdmin.add(DeletarAdmin);</span>
+
+<span class="nc" id="L249">        EditarAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/user_edit.png&quot;))); // NOI18N</span>
+<span class="nc" id="L250">        EditarAdmin.setText(&quot;Editar&quot;);</span>
+<span class="nc" id="L251">        EditarAdmin.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L253">                EditarAdminActionPerformed(evt);</span>
+<span class="nc" id="L254">            }</span>
+        });
+<span class="nc" id="L256">        MenuAdmin.add(EditarAdmin);</span>
+
+<span class="nc" id="L258">        VisualizarAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagens/group.png&quot;))); // NOI18N</span>
+<span class="nc" id="L259">        VisualizarAdmin.setText(&quot;Visualizar&quot;);</span>
+<span class="nc" id="L260">        VisualizarAdmin.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L262">                VisualizarAdminActionPerformed(evt);</span>
+<span class="nc" id="L263">            }</span>
+        });
+<span class="nc" id="L265">        MenuAdmin.add(VisualizarAdmin);</span>
+
+<span class="nc" id="L267">        jMenuBar1.add(MenuAdmin);</span>
+
+<span class="nc" id="L269">        setJMenuBar(jMenuBar1);</span>
+
+<span class="nc" id="L271">        pack();</span>
+<span class="nc" id="L272">        setLocationRelativeTo(null);</span>
+<span class="nc" id="L273">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+     /** Método que ao clicar na opção Editar do menu de Obras, é acionado, e chama o método TelaEditar do Controller de Obras
+      * @see ControllerObras
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void EditarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarObraActionPerformed
+<span class="nc" id="L281">        co.TelaEditar();</span>
+<span class="nc" id="L282">    }//GEN-LAST:event_EditarObraActionPerformed</span>
+    
+    /** Método que ao clicar na opção Visualizar do menu de Obras, é acionado, e chama o método TelaVisualizar do Controller de Obras
+      * @see ControllerObras
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+                                           
+    private void VisualizarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisualizarObraActionPerformed
+<span class="nc" id="L290">        co.TelaVisualizar();</span>
+       
+<span class="nc" id="L292">    }//GEN-LAST:event_VisualizarObraActionPerformed</span>
+
+    /** Método que ao clicar na opção Novo do menu de Emprestimo, é acionado, e chama o método TelaAdcionar do Controller de Emprestimos
+      * @see ControllerEmprestimo
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void NovoEmpresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoEmpresActionPerformed
+<span class="nc" id="L300">         ce.TelaAdcionar(Admin.getNome());</span>
+<span class="nc" id="L301">    }//GEN-LAST:event_NovoEmpresActionPerformed</span>
+
+    /** Método que ao clicar na opção Visualizar do menu de Emprestimo, é acionado, e chama o método TelaVisualizar do Controller de Emprestimos
+      * @see ControllerEmprestimo
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void VisualizarEmpresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisualizarEmpresActionPerformed
+<span class="nc" id="L309">        ce.TelaVisualizar();           </span>
+<span class="nc" id="L310">    }//GEN-LAST:event_VisualizarEmpresActionPerformed</span>
+    
+    /** Método que ao clicar na opção Devolucao do menu de Emprestimo, é acionado, e chama o método TelaRemover do Controller de Emprestimos
+      * @see ControllerEmprestimo
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void DevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DevolucaoActionPerformed
+<span class="nc" id="L318">        ce.TelaRemover();</span>
+<span class="nc" id="L319">    }//GEN-LAST:event_DevolucaoActionPerformed</span>
+
+    /** Método que ao clicar na opção Novo do menu de Usuarios, é acionado, e chama o método TelaAdcionar do Controller de Usuarios
+      * @see ControllerUsuario
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void NovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoUsuarioActionPerformed
+<span class="nc" id="L327">        cobre.TelaAdcionar();</span>
+<span class="nc" id="L328">    }//GEN-LAST:event_NovoUsuarioActionPerformed</span>
+
+    private void NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoActionPerformed
+        
+<span class="nc" id="L332">    }//GEN-LAST:event_NovoActionPerformed</span>
+
+    /** Método que ao clicar na opção Novo do menu de Admnistradores, é acionado, e chama o método TelaAdcionar do Controller de Admnistradores
+      * @see ControllerAdmin
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void NovoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoAdminActionPerformed
+<span class="nc" id="L340">        ca.TelaAdcionar();</span>
+<span class="nc" id="L341">    }//GEN-LAST:event_NovoAdminActionPerformed</span>
+    
+    /** Método que ao clicar na opção Novo do menu de Obras, é acionado, e chama o método TelaAdcionar do Controller de Obras
+      * @see ControllerObras
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void NovoObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoObraActionPerformed
+<span class="nc" id="L349">       co.TelaAdcionar();</span>
+<span class="nc" id="L350">    }//GEN-LAST:event_NovoObraActionPerformed</span>
+
+    /** Método que ao clicar na opção Deletar do menu de Obras, é acionado, e chama o método TelaRemover do Controller de Obras
+      * @see ControllerObras
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void DeletarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletarObraActionPerformed
+<span class="nc" id="L358">       co.TelaRemover();</span>
+<span class="nc" id="L359">    }//GEN-LAST:event_DeletarObraActionPerformed</span>
+    
+    /** Método que ao clicar na opção Deletar do menu de Usuarios, é acionado, e chama o método TelaRemover do Controller de Usuarios
+      * @see ControllerUsuario
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void DeletarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletarUsuarioActionPerformed
+<span class="nc" id="L367">        cobre.TelaRemover();</span>
+<span class="nc" id="L368">    }//GEN-LAST:event_DeletarUsuarioActionPerformed</span>
+
+    /** Método que ao clicar na opção Deletar do menu de Admnistradores, é acionado, e chama o método TelaAdcionar do TelaRemover de Admnistradores
+      * @see ControllerAdmin
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void DeletarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletarAdminActionPerformed
+<span class="nc" id="L376">        ca.TelaRemover();</span>
+<span class="nc" id="L377">    }//GEN-LAST:event_DeletarAdminActionPerformed</span>
+
+    /** Método que ao clicar na opção Editar do menu de Admnistradores, é acionado, e chama o método TelaEditar do TelaRemover de Admnistradores
+      * @see ControllerAdmin
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void EditarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarAdminActionPerformed
+<span class="nc" id="L385">       ca.TelaEditar();</span>
+<span class="nc" id="L386">    }//GEN-LAST:event_EditarAdminActionPerformed</span>
+
+    /** Método que ao clicar na opção Visualizar do menu de Admnistradores, é acionado, e chama o método TelaVisualizar do TelaRemover de Admnistradores
+      * @see ControllerAdmin
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void VisualizarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisualizarAdminActionPerformed
+<span class="nc" id="L394">        ca.TelaVisualizar();</span>
+<span class="nc" id="L395">    }//GEN-LAST:event_VisualizarAdminActionPerformed</span>
+    
+    /** Método que ao clicar na opção Editar do menu de Usuarios, é acionado, e chama o método TelaEditar do Controller de Usuarios
+      * @see ControllerUsuario
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void EditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarUsuarioActionPerformed
+<span class="nc" id="L403">        cobre.TelaEditar();</span>
+<span class="nc" id="L404">    }//GEN-LAST:event_EditarUsuarioActionPerformed</span>
+
+    /** Método que ao clicar na opção Visualizar do menu de Usuarios, é acionado, e chama o método TelaVisualizar do Controller de Usuarios
+      * @see ControllerUsuario
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void VisualizarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisualizarUsuarioActionPerformed
+<span class="nc" id="L412">        cobre.TelaVisualizar();</span>
+<span class="nc" id="L413">    }//GEN-LAST:event_VisualizarUsuarioActionPerformed</span>
+    
+    /** Método que ao clicar na opção Divida do menu de Emprestimo, é acionado, e chama o método TelaDevedores do Controller de Emprestimos
+      * @see ControllerEmprestimo
+      * @param evt ActionEvent - Ação do botão sendo clicado
+      */
+    
+    private void DividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DividaActionPerformed
+<span class="nc" id="L421">        ce.TelaDevedores();</span>
+<span class="nc" id="L422">    }//GEN-LAST:event_DividaActionPerformed</span>
+   
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem DeletarAdmin;
+    private javax.swing.JMenuItem DeletarObra;
+    private javax.swing.JMenuItem DeletarUsuario;
+    private javax.swing.JMenuItem Devolucao;
+    private javax.swing.JMenuItem Divida;
+    private javax.swing.JMenuItem EditarAdmin;
+    private javax.swing.JMenuItem EditarObra;
+    private javax.swing.JMenuItem EditarUsuario;
+    private javax.swing.JMenu MenuAdmin;
+    private javax.swing.JMenu Novo;
+    private javax.swing.JMenuItem NovoAdmin;
+    private javax.swing.JMenuItem NovoEmpres;
+    private javax.swing.JMenuItem NovoObra;
+    private javax.swing.JMenuItem NovoUsuario;
+    private javax.swing.JMenu Visualizar;
+    private javax.swing.JMenuItem VisualizarAdmin;
+    private javax.swing.JMenuItem VisualizarEmpres;
+    private javax.swing.JMenuItem VisualizarObra;
+    private javax.swing.JMenuItem VisualizarUsuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

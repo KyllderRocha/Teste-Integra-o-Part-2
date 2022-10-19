@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ObraDAOImp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">ModeloDAO</a> &gt; <span class="el_source">ObraDAOImp.java</span></div><h1>ObraDAOImp.java</h1><pre class="source lang-java linenums">
+package ModeloDAO;
+
+import Classes.Artigo;
+import Classes.Especificos;
+import Classes.Livros;
+import Classes.Manga;
+import Classes.MidiasEletronicas;
+import Classes.NormasTecnicas;
+import Classes.Periodicos;
+import Classes.Quadrinhos;
+import Modelo.Obra;
+import Utilitario.Conexao;
+import static Utilitario.Conexao.closeConnection;
+import static Utilitario.Conexao.getConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *Classe que implementa ObrasDAO e que irá executar os códigos relacionados com o Banco de Dados
+ * @author Kyllder, Pedro e Thiago
+ */
+<span class="nc" id="L28">public class ObraDAOImp implements ObraDAO{</span>
+    /**
+     * Atributo do pacote Utilitário referente a classe Connection
+     * @see Conexao
+     */
+    Connection con;
+    
+    /**
+     * Método que irá inserir uma Obra no Banco de Dados
+     * @param u
+     */
+    public void InsereObra(Obra u) {
+<span class="nc" id="L40">        con=Conexao.getConnection();</span>
+<span class="nc" id="L41">        PreparedStatement stmt=null;</span>
+        try {
+<span class="nc" id="L43">            stmt=con.prepareStatement(&quot;Insert into Obra (cod,nome,autor,assunto,editora,genero,numero,copias,tipo) values (?,?,?,?,?,?,?,?,?)&quot;);</span>
+<span class="nc" id="L44">             stmt.setInt(1,u.getCod());</span>
+<span class="nc" id="L45">             stmt.setString(2,u.getNome());</span>
+<span class="nc" id="L46">             stmt.setString(3,u.getAutor());</span>
+<span class="nc" id="L47">             stmt.setString(4,u.getAssunto());</span>
+<span class="nc" id="L48">             stmt.setString(5,u.getEditora());</span>
+<span class="nc" id="L49">             stmt.setString(6,u.getGenero());</span>
+<span class="nc" id="L50">             stmt.setString(7,u.getNumero());</span>
+<span class="nc" id="L51">             stmt.setInt(8,u.getCopias());</span>
+<span class="nc" id="L52">             stmt.setString(9,u.getTipo());</span>
+<span class="nc" id="L53">             stmt.executeUpdate();</span>
+            
+<span class="nc" id="L55">        } catch (SQLException ex) {</span>
+<span class="nc" id="L56">            Logger.getLogger(UsuariosDAOImp.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L58">            Conexao.closeConnection(con, stmt);</span>
+        }
+<span class="nc" id="L60">    }</span>
+
+    
+    /**
+     * Método que irá deletar uma Obra no Banco de Dados
+     * @param u
+     */
+    public void DeletarObra(Obra u) {
+<span class="nc" id="L68">       con=Conexao.getConnection();</span>
+<span class="nc" id="L69">        PreparedStatement stmt=null;</span>
+        try {
+<span class="nc" id="L71">            stmt=con.prepareStatement(&quot;DELETE FROM Obra WHERE cod =&quot;+u.getCod());</span>
+<span class="nc" id="L72">            stmt.executeUpdate();</span>
+<span class="nc" id="L73">        } catch (SQLException ex) {</span>
+<span class="nc" id="L74">            Logger.getLogger(UsuariosDAOImp.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L76">            Conexao.closeConnection(con, stmt);</span>
+        }
+    
+<span class="nc" id="L79">    }</span>
+
+    
+    /**
+     * Método que irá atualizar uma Obra no Banco de Dados
+     * @param u
+     */
+    public void UpdateObra(Obra u) {
+<span class="nc" id="L87">        con=Conexao.getConnection();</span>
+<span class="nc" id="L88">         PreparedStatement stmt=null;</span>
+         try {
+<span class="nc" id="L90">            stmt=con.prepareStatement(&quot;UPDATE Obra SET nome = ?,autor = ?,assunto = ?,editora = ?,genero = ?,numero = ?,copias = ?,tipo = ? WHERE cod =&quot;+u.getCod());</span>
+            
+<span class="nc" id="L92">             stmt.setString(1,u.getNome());</span>
+<span class="nc" id="L93">             stmt.setString(2,u.getAutor());</span>
+<span class="nc" id="L94">             stmt.setString(3,u.getAssunto());</span>
+<span class="nc" id="L95">             stmt.setString(4,u.getEditora());</span>
+<span class="nc" id="L96">             stmt.setString(5,u.getGenero());</span>
+<span class="nc" id="L97">             stmt.setString(6,u.getNumero());</span>
+<span class="nc" id="L98">             stmt.setInt(7,u.getCopias());</span>
+<span class="nc" id="L99">             stmt.setString(8,u.getTipo());</span>
+<span class="nc" id="L100">             stmt.executeUpdate();</span>
+<span class="nc" id="L101">        } catch (SQLException ex) {</span>
+<span class="nc" id="L102">            Logger.getLogger(UsuariosDAOImp.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L104">            Conexao.closeConnection(con, stmt);</span>
+        }
+<span class="nc" id="L106">    }</span>
+
+    
+    /**
+     * Método que irá mostrar uma Obra por meio de uma palavra-chave
+     * @param pesquisa
+     * @return ArrayList
+     */
+    public ArrayList&lt;Obra&gt; BuscarObras(String pesquisa) {
+<span class="nc" id="L115">        con =getConnection();</span>
+<span class="nc" id="L116">        ArrayList&lt;Obra&gt; array= new ArrayList();</span>
+<span class="nc" id="L117">        ResultSet rs = null;</span>
+<span class="nc" id="L118">        PreparedStatement stmt = null;</span>
+<span class="nc" id="L119">        Obra a=null;</span>
+        try {
+<span class="nc" id="L121">            stmt = con.prepareStatement(&quot;SELECT * FROM Obra WHERE nome like '%&quot;+pesquisa+&quot;%' &quot;</span>
+                            + &quot;or autor like '%&quot;+pesquisa+&quot;%' &quot;
+                            + &quot;or assunto like '%&quot;+pesquisa+&quot;%' &quot;
+                            + &quot;or editora like '%&quot;+pesquisa+&quot;%'&quot;
+                            + &quot;or tipo like '%&quot;+pesquisa+&quot;%'&quot;
+                            + &quot;or genero like '%&quot;+pesquisa+&quot;%' ORDER BY nome ASC&quot;);
+<span class="nc" id="L127">            rs = stmt.executeQuery();</span>
+<span class="nc bnc" id="L128" title="All 2 branches missed.">            while (rs.next()) {                </span>
+<span class="nc bnc" id="L129" title="All 10 branches missed.">                switch(rs.getString(&quot;tipo&quot;)){</span>
+                    case &quot;Artigo&quot;:
+<span class="nc" id="L131">                        a=new Artigo(rs.getString(&quot;nome&quot;),rs.getString(&quot;assunto&quot;),rs.getString(&quot;autor&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));</span>
+<span class="nc" id="L132">                        break;</span>
+                    case &quot;Especificos&quot;:
+<span class="nc" id="L134">                        a=new Especificos(rs.getString(&quot;nome&quot;), rs.getString(&quot;assunto&quot;), rs.getString(&quot;autor&quot;),rs.getString(&quot;editora&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));</span>
+<span class="nc" id="L135">                        break;</span>
+                    case &quot;Livro&quot;:
+<span class="nc" id="L137">                        a=new Livros(rs.getString(&quot;nome&quot;), rs.getString(&quot;assunto&quot;), rs.getString(&quot;autor&quot;),rs.getString(&quot;editora&quot;), rs.getString(&quot;genero&quot;),rs.getInt(&quot;copias&quot;), rs.getInt(&quot;cod&quot;));</span>
+<span class="nc" id="L138">                        break;    </span>
+                    case &quot;Manga&quot;:
+<span class="nc" id="L140">                        a=(Obra) new Manga( rs.getString(&quot;genero&quot;),rs.getString(&quot;nome&quot;), rs.getString(&quot;assunto&quot;), rs.getString(&quot;editora&quot;),rs.getString(&quot;autor&quot;),rs.getInt(&quot;copias&quot;), rs.getInt(&quot;cod&quot;));</span>
+<span class="nc" id="L141">                        break;</span>
+                    case &quot;Quadrinhos&quot;:
+<span class="nc" id="L143">                        a= new Quadrinhos(rs.getString(&quot;nome&quot;), rs.getString(&quot;assunto&quot;), rs.getString(&quot;editora&quot;),rs.getString(&quot;autor&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));        </span>
+<span class="nc" id="L144">                        break;</span>
+                    case &quot;DVD&quot;:
+<span class="nc" id="L146">                        a = new MidiasEletronicas(rs.getString(&quot;nome&quot;), rs.getString(&quot;autor&quot;), rs.getString(&quot;assunto&quot;),rs.getString(&quot;tipo&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));         </span>
+<span class="nc" id="L147">                        break;</span>
+                    case &quot;CD&quot;:
+<span class="nc" id="L149">                         a = new MidiasEletronicas(rs.getString(&quot;nome&quot;), rs.getString(&quot;autor&quot;), rs.getString(&quot;assunto&quot;),rs.getString(&quot;tipo&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));</span>
+<span class="nc" id="L150">                        break;</span>
+                    case &quot;NormasTecnicas&quot;:
+<span class="nc" id="L152">                        a = new NormasTecnicas(rs.getString(&quot;nome&quot;),rs.getString(&quot;assunto&quot;),rs.getString(&quot;numero&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));</span>
+<span class="nc" id="L153">                        break;</span>
+                    case &quot;Periodicos&quot;:
+<span class="nc" id="L155">                        a = new Periodicos(rs.getString(&quot;nome&quot;), rs.getString(&quot;editora&quot;), rs.getString(&quot;assunto&quot;),rs.getString(&quot;numero&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));</span>
+                        break;    
+                }
+                
+                
+<span class="nc" id="L160">                array.add(a);</span>
+            }
+            
+            
+<span class="nc" id="L164">        } catch (SQLException ex) {</span>
+<span class="nc" id="L165">            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L167">            closeConnection(con, stmt, rs);</span>
+<span class="nc" id="L168">            return array;</span>
+        }
+    }
+
+    
+    /**
+     *Método que irá mostrar todas as Obras cadastradas no Banco de Dados
+     * @return ArrayList
+     */
+    public ArrayList&lt;Obra&gt; ListaObras() {
+<span class="nc" id="L178">        con =getConnection();</span>
+<span class="nc" id="L179">        ArrayList&lt;Obra&gt; array= new ArrayList();</span>
+<span class="nc" id="L180">        ResultSet rs = null;</span>
+<span class="nc" id="L181">        PreparedStatement stmt = null;</span>
+<span class="nc" id="L182">        Obra a=null;</span>
+        try {
+<span class="nc" id="L184">            stmt = con.prepareStatement(&quot;SELECT * FROM Obra ORDER BY nome ASC&quot;);</span>
+<span class="nc" id="L185">            rs = stmt.executeQuery();</span>
+<span class="nc bnc" id="L186" title="All 2 branches missed.">            while (rs.next()) {                </span>
+<span class="nc bnc" id="L187" title="All 10 branches missed.">                switch(rs.getString(&quot;tipo&quot;)){</span>
+                    case &quot;Artigo&quot;:
+<span class="nc" id="L189">                        a=new Artigo(rs.getString(&quot;nome&quot;),rs.getString(&quot;assunto&quot;),rs.getString(&quot;autor&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));</span>
+<span class="nc" id="L190">                        break;</span>
+                    case &quot;Especificos&quot;:
+<span class="nc" id="L192">                        a=new Especificos(rs.getString(&quot;nome&quot;), rs.getString(&quot;assunto&quot;), rs.getString(&quot;autor&quot;),rs.getString(&quot;editora&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));</span>
+<span class="nc" id="L193">                        break;</span>
+                    case &quot;Livro&quot;:
+<span class="nc" id="L195">                        a=new Livros(rs.getString(&quot;nome&quot;), rs.getString(&quot;assunto&quot;), rs.getString(&quot;autor&quot;),rs.getString(&quot;editora&quot;),rs.getString(&quot;genero&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));</span>
+<span class="nc" id="L196">                        break;    </span>
+                    case &quot;Manga&quot;:
+<span class="nc" id="L198">                        a=(Obra) new Manga( rs.getString(&quot;genero&quot;),rs.getString(&quot;nome&quot;), rs.getString(&quot;assunto&quot;), rs.getString(&quot;editora&quot;),rs.getString(&quot;autor&quot;),rs.getInt(&quot;copias&quot;), rs.getInt(&quot;cod&quot;));</span>
+<span class="nc" id="L199">                        break;</span>
+                    case &quot;Quadrinhos&quot;:
+<span class="nc" id="L201">                        a= new Quadrinhos(rs.getString(&quot;nome&quot;), rs.getString(&quot;assunto&quot;), rs.getString(&quot;editora&quot;),rs.getString(&quot;autor&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));        </span>
+<span class="nc" id="L202">                        break;</span>
+                    case &quot;DVD&quot;:
+<span class="nc" id="L204">                        a = new MidiasEletronicas(rs.getString(&quot;nome&quot;), rs.getString(&quot;autor&quot;), rs.getString(&quot;assunto&quot;),rs.getString(&quot;tipo&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));         </span>
+<span class="nc" id="L205">                        break;</span>
+                    case &quot;CD&quot;:
+<span class="nc" id="L207">                         a = new MidiasEletronicas(rs.getString(&quot;nome&quot;), rs.getString(&quot;autor&quot;), rs.getString(&quot;assunto&quot;),rs.getString(&quot;tipo&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));</span>
+<span class="nc" id="L208">                        break;</span>
+                    case &quot;NormasTecnicas&quot;:
+<span class="nc" id="L210">                        a = new NormasTecnicas(rs.getString(&quot;nome&quot;),rs.getString(&quot;assunto&quot;),rs.getString(&quot;numero&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));</span>
+<span class="nc" id="L211">                        break;</span>
+                    case &quot;Periodicos&quot;:
+<span class="nc" id="L213">                        a = new Periodicos(rs.getString(&quot;nome&quot;), rs.getString(&quot;editora&quot;), rs.getString(&quot;assunto&quot;),rs.getString(&quot;numero&quot;),rs.getInt(&quot;copias&quot;),rs.getInt(&quot;cod&quot;));</span>
+                        break;    
+                }
+                
+                
+<span class="nc" id="L218">                array.add(a);</span>
+            }
+            
+            
+<span class="nc" id="L222">        } catch (SQLException ex) {</span>
+<span class="nc" id="L223">            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L225">            closeConnection(con, stmt, rs);</span>
+<span class="nc" id="L226">            return array;</span>
+        }
+    }
+
+    
+    /**
+     * Método que irá retornar o Cod para a Obra
+     * @return Int - código da Obra
+     */
+    public int getCod() {
+<span class="nc" id="L236">        con =getConnection();</span>
+<span class="nc" id="L237">        int cod=0;</span>
+<span class="nc" id="L238">        ResultSet rs = null;</span>
+<span class="nc" id="L239">        PreparedStatement stmt = null;</span>
+        try {
+<span class="nc" id="L241">            stmt = con.prepareStatement(&quot;SELECT count(*) FROM Obra&quot;);</span>
+<span class="nc" id="L242">            rs = stmt.executeQuery();</span>
+            
+<span class="nc bnc" id="L244" title="All 2 branches missed.">            if (rs.next()) {</span>
+<span class="nc" id="L245">               cod=rs.getInt(1);</span>
+            }
+            
+            
+<span class="nc" id="L249">        } catch (SQLException ex) {</span>
+<span class="nc" id="L250">            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L252">            closeConnection(con, stmt, rs);</span>
+<span class="nc" id="L253">            return cod;</span>
+        }
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

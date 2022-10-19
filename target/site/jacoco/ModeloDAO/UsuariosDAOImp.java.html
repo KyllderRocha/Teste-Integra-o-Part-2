@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UsuariosDAOImp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste</a> &gt; <a href="index.source.html" class="el_package">ModeloDAO</a> &gt; <span class="el_source">UsuariosDAOImp.java</span></div><h1>UsuariosDAOImp.java</h1><pre class="source lang-java linenums">package ModeloDAO;
+
+import Classes.UsuarioCom;
+import Classes.UsuarioFunc;
+import Classes.UsuarioNormal;
+import Modelo.Usuarios;
+import Utilitario.Conexao;
+import static Utilitario.Conexao.closeConnection;
+import static Utilitario.Conexao.getConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *Classe que implementa UsuariosDAO e que irá executar os códigos relacionados com o Banco de Dados
+ * @author Kyllder, Pedro e Thiago
+ */
+<span class="nc" id="L22">public class UsuariosDAOImp implements UsuariosDAO{</span>
+     /**
+     * Atributo do pacote Utilitário referente a classe Connection
+     * @see Conexao
+     */
+<span class="nc" id="L27">    private Connection con=null;</span>
+    
+   
+    @Override
+     /**
+     *Método que irá inserir um Usuário no Banco de Dados
+     * @param u
+     */
+    public void InsereUsuario(Usuarios u) {
+<span class="nc" id="L36">        con=Conexao.getConnection();</span>
+<span class="nc" id="L37">        PreparedStatement stmt=null;</span>
+        try {
+<span class="nc" id="L39">            stmt=con.prepareStatement(&quot;Insert into cliente (nome,cpf,rg,telefone,endereco,tipo,divida) values (?,?,?,?,?,?,?)&quot;);</span>
+<span class="nc" id="L40">            stmt.setString(1,u.getNome());</span>
+<span class="nc" id="L41">             stmt.setString(2,u.getCPF());</span>
+<span class="nc" id="L42">             stmt.setString(3,u.getRG());</span>
+<span class="nc" id="L43">             stmt.setString(4,u.getTelefone());</span>
+<span class="nc" id="L44">             stmt.setString(5,u.getEndereco());</span>
+<span class="nc" id="L45">             stmt.setString(6,u.getTipo());</span>
+<span class="nc" id="L46">             stmt.setDouble(7,u.getDivida());</span>
+<span class="nc" id="L47">             stmt.executeUpdate();</span>
+            
+<span class="nc" id="L49">        } catch (SQLException ex) {</span>
+<span class="nc" id="L50">            Logger.getLogger(UsuariosDAOImp.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L52">            Conexao.closeConnection(con, stmt);</span>
+        }
+        
+<span class="nc" id="L55">    }</span>
+
+    @Override
+    /**
+     *Método que irá deletar um Usuário no Banco de Dados
+     * @param u
+     */
+    public void DeletarUsuario(Usuarios u) {
+<span class="nc" id="L63">        con=Conexao.getConnection();</span>
+<span class="nc" id="L64">        PreparedStatement stmt=null;</span>
+        try {
+<span class="nc" id="L66">            stmt=con.prepareStatement(&quot;DELETE FROM cliente WHERE cpf like '&quot;+u.getCPF()+&quot;'&quot;);</span>
+<span class="nc" id="L67">            stmt.executeUpdate();</span>
+<span class="nc" id="L68">        } catch (SQLException ex) {</span>
+<span class="nc" id="L69">            Logger.getLogger(UsuariosDAOImp.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L71">            Conexao.closeConnection(con, stmt);</span>
+        }
+<span class="nc" id="L73">    }</span>
+
+    @Override
+    /**
+     *Método que irá atualizar um Usuário no Banco de Dados
+     * @param u
+     * @param cpf
+     */
+    public void UpdateUsuario(Usuarios u,String cpf) {
+<span class="nc" id="L82">         con=Conexao.getConnection();</span>
+<span class="nc" id="L83">         PreparedStatement stmt=null;</span>
+         try {
+<span class="nc" id="L85">            stmt=con.prepareStatement(&quot;UPDATE cliente SET nome = ?,cpf = ?,rg = ?,telefone = ?,endereco = ?,tipo =?,divida=? WHERE cpf like '&quot;+cpf+&quot;'&quot;);</span>
+<span class="nc" id="L86">            stmt.setString(1,u.getNome());</span>
+<span class="nc" id="L87">                 stmt.setString(2,u.getCPF());</span>
+<span class="nc" id="L88">                 stmt.setString(3,u.getRG());</span>
+<span class="nc" id="L89">                 stmt.setString(4,u.getTelefone());</span>
+<span class="nc" id="L90">                 stmt.setString(5,u.getEndereco());</span>
+<span class="nc" id="L91">                 stmt.setString(6,u.getTipo());</span>
+<span class="nc" id="L92">                 stmt.setDouble(7,u.getDivida());</span>
+<span class="nc" id="L93">            stmt.executeUpdate();</span>
+<span class="nc" id="L94">        } catch (SQLException ex) {</span>
+<span class="nc" id="L95">            Logger.getLogger(UsuariosDAOImp.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L97">            Conexao.closeConnection(con, stmt);</span>
+        }
+<span class="nc" id="L99">    }</span>
+
+    
+    @Override
+    /**
+     * Método que irá mostrar um ou mais Usuários por meio de uma palavra-chave
+     * @param pesquisa
+     * @return ArrayList
+     */
+    public ArrayList&lt;Usuarios&gt; BuscarUsuarios(String pesquisa) {
+<span class="nc" id="L109">        con =getConnection();</span>
+<span class="nc" id="L110">        ArrayList&lt;Usuarios&gt; array= new ArrayList();</span>
+<span class="nc" id="L111">        ResultSet rs = null;</span>
+<span class="nc" id="L112">        PreparedStatement stmt = null;</span>
+        String aux;
+<span class="nc" id="L114">        Usuarios a=null;</span>
+        try {
+<span class="nc" id="L116">            stmt = con.prepareStatement(&quot;SELECT * FROM cliente WHERE nome like '%&quot;+pesquisa+&quot;%' &quot;</span>
+                            + &quot;or cpf like '%&quot;+pesquisa+&quot;%' &quot;
+                            + &quot;or rg like '%&quot;+pesquisa+&quot;%' &quot;
+                            + &quot;or endereco like '%&quot;+pesquisa+&quot;%'&quot;
+                            + &quot;or tipo like '%&quot;+pesquisa+&quot;%' ORDER BY nome ASC&quot;);
+<span class="nc" id="L121">            rs = stmt.executeQuery();</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">            while (rs.next()) {                </span>
+<span class="nc" id="L123">                aux=rs.getString(&quot;tipo&quot;);</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">                if (aux.equals(&quot;Normal&quot;)) {</span>
+<span class="nc" id="L125">                    a=new UsuarioNormal(rs.getString(&quot;nome&quot;),rs.getString(&quot;cpf&quot;),rs.getString(&quot;rg&quot;),rs.getString(&quot;telefone&quot;),rs.getString(&quot;endereco&quot;),rs.getDouble(&quot;divida&quot;));</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">                }else if(aux.equals(&quot;Comerciario&quot;)){</span>
+<span class="nc" id="L127">                    a=new UsuarioCom(rs.getString(&quot;nome&quot;),rs.getString(&quot;cpf&quot;),rs.getString(&quot;rg&quot;),rs.getString(&quot;telefone&quot;),rs.getString(&quot;endereco&quot;),rs.getDouble(&quot;divida&quot;));</span>
+<span class="nc bnc" id="L128" title="All 2 branches missed.">                }else if(aux.equals(&quot;Funcionario&quot;)){</span>
+<span class="nc" id="L129">                    a=new UsuarioFunc(rs.getString(&quot;nome&quot;),rs.getString(&quot;cpf&quot;),rs.getString(&quot;rg&quot;),rs.getString(&quot;telefone&quot;),rs.getString(&quot;endereco&quot;),rs.getDouble(&quot;divida&quot;));</span>
+                }
+                
+<span class="nc" id="L132">                array.add(a);</span>
+            }
+            
+<span class="nc" id="L135">        } catch (SQLException ex) {</span>
+<span class="nc" id="L136">            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L138">            closeConnection(con, stmt, rs);</span>
+<span class="nc" id="L139">            return array;</span>
+        }
+        
+        
+    }
+    @Override
+     /**
+     *Método que irá mostrar todas os Usuários cadastrados no Banco de Dados
+     * @return ArrayList
+     */
+    public ArrayList&lt;Usuarios&gt; ListaUsuarios() {
+<span class="nc" id="L150">        con=getConnection();</span>
+<span class="nc" id="L151">        PreparedStatement stmt=null;</span>
+<span class="nc" id="L152">        ResultSet rs=null;</span>
+        String aux;
+<span class="nc" id="L154">        ArrayList&lt;Usuarios&gt; array=new ArrayList();</span>
+<span class="nc" id="L155">        Usuarios a=null;</span>
+        try {
+            
+<span class="nc" id="L158">            stmt=con.prepareStatement(&quot;SELECT * FROM cliente ORDER BY nome ASC&quot;);</span>
+<span class="nc" id="L159">           rs= stmt.executeQuery();</span>
+           
+<span class="nc bnc" id="L161" title="All 2 branches missed.">            while (rs.next()) {    </span>
+                
+<span class="nc" id="L163">                aux=rs.getString(&quot;tipo&quot;);</span>
+<span class="nc bnc" id="L164" title="All 2 branches missed.">                if (aux.equals(&quot;Normal&quot;)) {</span>
+<span class="nc" id="L165">                    a=new UsuarioNormal(rs.getString(&quot;nome&quot;),rs.getString(&quot;cpf&quot;),rs.getString(&quot;rg&quot;),rs.getString(&quot;telefone&quot;),rs.getString(&quot;endereco&quot;),rs.getDouble(&quot;divida&quot;));</span>
+<span class="nc bnc" id="L166" title="All 2 branches missed.">                }else if(aux.equals(&quot;Comerciario&quot;)){</span>
+<span class="nc" id="L167">                    a=new UsuarioCom(rs.getString(&quot;nome&quot;),rs.getString(&quot;cpf&quot;),rs.getString(&quot;rg&quot;),rs.getString(&quot;telefone&quot;),rs.getString(&quot;endereco&quot;),rs.getDouble(&quot;divida&quot;));</span>
+<span class="nc bnc" id="L168" title="All 2 branches missed.">                }else if(aux.equals(&quot;Funcionario&quot;)){</span>
+<span class="nc" id="L169">                    a=new UsuarioFunc(rs.getString(&quot;nome&quot;),rs.getString(&quot;cpf&quot;),rs.getString(&quot;rg&quot;),rs.getString(&quot;telefone&quot;),rs.getString(&quot;endereco&quot;),rs.getDouble(&quot;divida&quot;));</span>
+                }
+                
+<span class="nc" id="L172">                array.add(a);</span>
+            }
+            
+<span class="nc" id="L175">        } catch (SQLException ex) {</span>
+<span class="nc" id="L176">            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);</span>
+        }finally{
+<span class="nc" id="L178">            closeConnection(con, stmt, rs);</span>
+<span class="nc" id="L179">            return array;</span>
+        }
+    }
+
+    
+    }
+    
+    
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
