@@ -41,5 +41,18 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+          
+      - name: Maven Test
+        run: mvn test
+
+      - run: mkdir coverage-report && cp -r target/site/jacoco/* coverage-report
+      - name: Publish Test Report
+        if: ${{ always() }}
+        uses: scacap/action-surefire-report@v1
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Test Coverage Report
+          path: coverage-report
       - name: Run tests with Maven
         run: mvn -B test --file pom.xml
